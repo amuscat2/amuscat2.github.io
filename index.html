@@ -14,7 +14,9 @@
      <td><span datafld='english'></span></td>
      <td><span datafld='french'> </span></td>
      <td><span datafld='german'> </span></td>
+
   </tbody>
+
 
 </table>
 
@@ -24,5 +26,18 @@
   <param nAme="UseHeader" value="true">
 </object>
 
+.
+<div id='table-container'></div>
+.
+ 
+<script>
+  CsvToHtmlTable.init({
+    csv_path: 'amuscat2.github.io/mlb.csv',
+    element: 'table-container', 
+    allow_download: true,
+    csv_options: {separator: ';', delimiter: '"'},
+    datatables_options: {"paging": false}
+  });
+</script>
 </body>
 </html>
