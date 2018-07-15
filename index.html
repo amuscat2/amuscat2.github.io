@@ -1,7 +1,28 @@
 <!DOCTYPE html>
 <html>
+<head><title>Reading values into a table</title></head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<table datasrc='#data'>
+  
+  <thead>
+     <tr><th>Number</th><th>English</th><th>French</th><th>German</th></tr>
+  </thead>
+
+  <tbody> <tr>
+     <td><span datafld='number'> </span></td>
+     <td><span datafld='english'></span></td>
+     <td><span datafld='french'> </span></td>
+     <td><span datafld='german'> </span></td>
+  </tbody>
+
+</table>
+
+
+<object ID=data classid="clsid:333C7BC4-460F-11D0-BC04-0080C7055A83">
+  <param nAme="DataURL" value="mlb.csv">
+  <param nAme="UseHeader" value="true">
+</object>
+
 </body>
 </html>
