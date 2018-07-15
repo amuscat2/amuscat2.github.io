@@ -14,17 +14,6 @@
     <rect></rect>
 </svg>
 
-<script>
-var data = [4,8,15,16,23,42];
-document.getElementById("data").innerHTML = data;
-d3.selectAll("rect")
-	.data(data)
-    .attr("width",19)
-    .attr("height",function(d) { return 10*d; })
-    .attr("x",function(d,i) { return 20*i; })
-    .attr("y",function(d) { return 420 - 10*d; });
-</script>
-
 <script src="example.txt"></script>
 <script>
   console.log(text);
