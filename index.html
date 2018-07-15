@@ -14,9 +14,11 @@
     <rect></rect>
 </svg>
 
-<script src="example.txt"></script>
+<script src="mlb.csv"></script>
 <script>
-  console.log(text);
+  d3.csv("mlb.csv", function(error, data) {
+  if (error) throw error;
+      console.log(data);
 </script>
 
 </body></html>
