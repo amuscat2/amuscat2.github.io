@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <style> .chart rect { fill: steelblue } </style>
 
 <html><body>
@@ -15,10 +15,14 @@
 </svg>
 
 <script>
-
- var data = d3.csv("mlb.csv", function(data) {
+ d3.csv("mlb.csv", function(data) {
  console.log(data[0]);
-});
+ console.log(data[1]);
+ console.log(data[2]);
+ console.log(data[3]);
+ console.log(data[4]);
+ console.log(data[5]);
+ console.log(data[6]);
 
 document.getElementById("data").innerHTML = data;
 d3.selectAll("rect")
@@ -27,11 +31,9 @@ d3.selectAll("rect")
     .attr("height",function(d) { return 10*d; })
     .attr("x",function(d,i) { return 20*i; })
     .attr("y",function(d) { return 420 - 10*d; });
-	
-	
+
+});
+
 </script>
-
-
-<script type="text/javascript">document.write('<p>"data"</p>');</script>
 
 </body></html>
