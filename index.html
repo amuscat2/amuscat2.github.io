@@ -46,9 +46,9 @@ document.getElementById("data").innerHTML = data;
 d3.selectAll("rect")
 	.data(data)
     .attr("width",19)
-    .attr("height",function(d.value) { return 10*d.value; })
+    .attr("height",function(d.value) { return 10*d.Value; })
     .attr("x",function(d,i) { return 20*i; })
-    .attr("y",function(d) { return 420 - 10*d.value; });
+    .attr("y",function(d) { return 420 - 10*d.Value; });
 </script>
 
 
