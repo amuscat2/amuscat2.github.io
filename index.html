@@ -3,12 +3,7 @@
 <style> .chart rect { fill: steelblue } </style>
 
 <html><body>
-<p style="color:red"> Let's see if this works... <span id="data"></span></p>
-
-<textarea id="display" style="width:500px;height:50px"></textarea>
-
-</body></html>
-
+<p>Test <span id="data"></span></p>
 
 <svg class="chart" width="500" height="500">
     <rect></rect>
@@ -19,40 +14,20 @@
     <rect></rect>
 </svg>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
  d3.csv("mlb.csv", function(data) {
  console.log(data[0]);
- console.log(data[1]);
- console.log(data[2]);
- console.log(data[3]);
- console.log(data[4]);
- console.log(data[5]);
- console.log(data[6]);
 });
-
-//var parsed = "";
-
-//for (i = 0; i< data.length; i++) {
-//                    var myobj=  data[i];
-//                    for (var property in myobj) {
-//                        parsed += property + ": " + myobj[property] + "\n";          
-//                    }
-//                }                           
-//                $("#display").val(parsed);    
 
 document.getElementById("data").innerHTML = data;
 d3.selectAll("rect")
 	.data(data)
     .attr("width",19)
-    .attr("height",10)
-    .attr("x",10)
-    .attr("y",10)
-	.attr("fill","green"); 
+    .attr("height",function(d) { return 10*d; })
+    .attr("x",function(d,i) { return 20*i; })
+    .attr("y",function(d) { return 420 - 10*d; });
 </script>
 
+</body></html>
 
-
-
-</script>
