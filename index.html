@@ -5,7 +5,7 @@
 <html><body>
 <p>Here are the magic numbers from Lost: <span id="data"></span></p>
 
-<svg class="chart" width="120" height="500">
+<svg class="chart" width="500" height="500">
     <rect></rect>
     <rect></rect>
     <rect></rect>
@@ -15,7 +15,11 @@
 </svg>
 
 <script>
-var data = [4,8,15,16,23,42];
+
+ d3.csv("mlb.csv", function(data) {
+ console.log(data[0]);
+});
+
 document.getElementById("data").innerHTML = data;
 d3.selectAll("rect")
 	.data(data)
