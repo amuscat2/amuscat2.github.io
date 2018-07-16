@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <style> .chart rect { fill: steelblue } </style>
 
 <html><body>
-<p>Test <span id="data"></span></p>
+<p>Here are the magic numbers from Lost: <span id="data"></span></p>
 
-<svg class="chart" width="500" height="500">
+<svg class="chart" width="120" height="500">
     <rect></rect>
     <rect></rect>
     <rect></rect>
@@ -15,10 +15,6 @@
 </svg>
 
 <script>
-
- d3.csv("mlb.csv", function(data) {
- console.log(data[0]);
-});
 var data = [4,8,15,16,23,42];
 document.getElementById("data").innerHTML = data;
 d3.selectAll("rect")
@@ -30,4 +26,3 @@ d3.selectAll("rect")
 </script>
 
 </body></html>
-
