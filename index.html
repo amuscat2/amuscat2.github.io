@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <style> .chart rect { fill: steelblue } </style>
 
 <html><body>
@@ -46,9 +46,10 @@ document.getElementById("data").innerHTML = data;
 d3.selectAll("rect")
 	.data(data)
     .attr("width",19)
-    .attr("height",function(d.Value) { return 10*d.Value; })
+    .attr("height",function(d) { return 10*d.Value; })
     .attr("x",function(d,i) { return 20*i; })
-    .attr("y",function(d) { return 420 - 10*d.Value; });
+    .attr("y",function(d) { return 420 - 10*d.Value; })
+	.attr("fill","green");
 </script>
 
 
