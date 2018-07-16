@@ -1,31 +1,30 @@
-Team,Value,Wins
-Arizona Diamondbacks,1.21,1
-Atlanta Braves,1.625,3
-Baltimore Orioles,1.2,3
-Boston Red Sox,2.8,8
-Chicago Cubs,2.9,3
-Chicago White Sox,1.5,3
-Cincinnati Reds,1.01,5
-Cleveland Indians,1.045,2
-Colorado Rockies,1.1,0
-Detroit Tigers,1.225,4
-Houston Astros,1.65,1
-Kansas City Royals,1.015,2
-Los Angeles Angels,1.8,1
-Los Angeles Dodgers,3,6
-Miami Marlins,1,2
-Milwaukee Brewers,1.03,0
-Minnesota Twins,1.15,3
-New York Mets,2.1,2
-New York Yankees,4,27
-Oakland Athletics,1.02,9
-Philadelphia Phillies,1.7,2
-Pittsburgh Pirates,1.26,5
-San Diego Padres,1.27,0
-Seattle Mariners,1.45,0
-San Francisco Giants,2.85,8
-St. Louis Cardinals,1.9,11
-Tampa Bay Rays,0.9,0
-Texas Rangers,1.6,0
-Toronto Blue Jays,1.35,2
-Washington Nationals,1.675,0
+1.21
+1.625
+1.2
+2.8
+2.9
+1.5
+1.01
+1.045
+1.1
+1.225
+1.65
+1.015
+1.8
+3
+1
+1.03
+1.15
+2.1
+4
+1.02
+1.7
+1.26
+1.27
+1.45
+2.85
+1.9
+0.9
+1.6
+1.35
+1.675
