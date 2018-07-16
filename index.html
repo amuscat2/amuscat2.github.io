@@ -4,9 +4,20 @@
 
 <html><body>
 <p style="color:red"> Let's see if this works... <span id="data"></span></p>
-<textarea id="display" style="width:1000px;height:1000px"></textarea>
+
+<textarea id="display" style="width:500px;height:50px"></textarea>
 
 </body></html>
+
+
+<svg class="chart" width="120" height="500">
+    <rect></rect>
+    <rect></rect>
+    <rect></rect>
+    <rect></rect>
+    <rect></rect>
+    <rect></rect>
+</svg>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
@@ -20,15 +31,26 @@
  console.log(data[5]);
  console.log(data[6]);
 
-var parsed = "";
+//var parsed = "";
 
-for (i = 0; i< data.length; i++) {
-                    var myobj=  data[i];
-                    for (var property in myobj) {
-                        parsed += property + ": " + myobj[property] + "\n";          
-                    }
-                }                           
-                $("#display").val(parsed);    
+//for (i = 0; i< data.length; i++) {
+//                    var myobj=  data[i];
+//                    for (var property in myobj) {
+//                        parsed += property + ": " + myobj[property] + "\n";          
+//                    }
+//                }                           
+//                $("#display").val(parsed);    
+
+document.getElementById("data").innerHTML = data;
+d3.selectAll("rect")
+	.data(data)
+    .attr("width",19)
+    .attr("height",function(d.value) { return 10*d.value; })
+    .attr("x",function(d,i) { return 20*i; })
+    .attr("y",function(d) { return 420 - 10*d.value; });
+</script>
+
+
 
 });
 </script>
