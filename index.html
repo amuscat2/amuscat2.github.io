@@ -22,20 +22,9 @@
 	<div id="svg-chart" style="background-color:white">
 	<svg id="mainviz" width="500" height="500">
 	<rect width="19" height="40" x="0" y="380" style = "fill:steelblue"></rect>
-	</svg>
-	</div>
-
+	
+	// Setup axes
 	<script>
-// d3.csv("mlb.csv", function(data) {
-// console.log(data[0]);
-// console.log(data[1]);
-// console.log(data[2]);
-// console.log(data[3]);
-	</script>
-
-<script>
-
-// Setup axes
 var margin = {top: 40px, right: 40px, bottom: 40px, left: 40px};
 var width = 500 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
@@ -55,6 +44,21 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
+</script>
+	
+	</svg>
+	</div>
+
+	<script>
+// d3.csv("mlb.csv", function(data) {
+// console.log(data[0]);
+// console.log(data[1]);
+// console.log(data[2]);
+// console.log(data[3]);
+	</script>
+
+<script>
+
 
 
 var data = [0,1,2,3,4,5]
