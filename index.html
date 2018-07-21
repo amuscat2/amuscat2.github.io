@@ -1,63 +1,37 @@
 <!DOCTYPE html>
-<!-- Add in d3 library -->
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<meta charset="utf-8">
+<script src="http://d3js.org/d3.v4.min.js"></script>
 
-<html lang="en">
+<style> .chart rect { fill: steelblue } </style>
 
-<!-- TITLE OF WEBPAGE -->
-<head>
-<title> MLB Performance</title>
-<link rel="stylesheet" href="css/style.css">
-</head>
+<html><body>
+<p>Here are the magic numbers from Lost: <span id="data"></span></p>
 
-<!-- WEBPAGE COMPONENTS -->
-<body>
-<h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
-<p>Start Here - Here we will vizualize the ERA vs OBP for the past 5 seasons including the current season.
-<br><br>
-<button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
-</p>
-
-<svg class="chart" style="background-color:white"></svg>
+<svg class="chart"></svg>
 
 <script>
-// d3.csv("mlb.csv", function(data) {
-// console.log(data[0]);
-// console.log(data[1]);
-// console.log(data[2]);
-// console.log(data[3]);
-
-// Setup axes
 var margin = 30;
-var width = 500;
-var height = 500;
+var width = 120;
+var height = 300;
 
-var data = [
-{"x":4.5,"y":"0.220","r":1}
-{"x":3.5,"y":"0.260","r":1}
-];
+var data = [4,8,15,16,23,42];
 document.getElementById("data").innerHTML = data;
 
+var x = d3.scaleBand()
+	.domain([0,1,2,3,4,5])
+    .range([0,width]);
+    
+var y = d3.scaleLinear()
+	.domain([0,42])
+    .range([height,0]);
 
-	
-var x = d3.scale.linear()
-    .domain([2,6])
-	.range([0, width]);
-
-var y = d3.scale.linear()
-    .domain([0.200,0.300])
-	.range(height, 0]);
-	
-var viz = d3.select(".chart");
+var chart = d3.select(".chart");
 
 chart.attr("width",width + 2*margin)
     .attr("height",height + 2*margin)
     .append("g")
         .attr("transform","translate(" + margin + "," + margin + ")")
     .selectAll("rect")
-
-	chart.data(data)
+	.data(data)
     .enter().append("rect")
     .attr("width",19)
     .attr("height",function(d) { return height - y(d); })
@@ -67,18 +41,11 @@ chart.attr("width",width + 2*margin)
 chart.append("g")
     .attr("transform", "translate(" + margin + "," + margin + ")")
     .call(d3.axisLeft(y));
-	
+
 chart.append("g")
     .attr("transform", "translate(" + margin + "," + (height+margin) + ")")
     .call(d3.axisBottom(x));
-	
-chart.enter().append("circle").attr("cx",function(d) { return 360+d.x; })
-    .attr("cy",function(d) { return 202.5+d.y; })
-    .attr("r",function(d) { return d.r / 2; })
-.attr("fill","green");
-	
-chart.exit().remove();
-	
-<script>
+    
+</script>
 
 </body></html>
