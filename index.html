@@ -23,7 +23,7 @@
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
 
-<svg class="chart" style="background-color:yellow"></svg>
+<svg class="chart" style="background-color:white"></svg>
 
 <script>
 // d3.csv("mlb.csv", function(data) {
@@ -37,14 +37,41 @@ var margin = 30;
 var width = 500;
 var height = 500;
 
-var data = [4,8,15,16,23,42];
+var data = 
+[
+    {
+        "x": 30,
+        "y": 40,
+        "r": 3
+    },
+    {
+        "x": 150,
+        "y": 80,
+        "r": 2
+    },
+    {
+        "x": -180,
+        "y": -50,
+        "r": 5
+    },
+    {
+        "x": 100,
+        "y": -120,
+        "r": 10
+    },
+    {
+        "x": -10,
+        "y": 20,
+        "r": 18
+    }
+]; 
 
-var x = d3.scaleBand()
-	.domain([0,1,2,3,4,5])
+var x = d3.scaleLinear()
+	.domain([2,6])
     .range([0,width]);
     
 var y = d3.scaleLinear()
-	.domain([0,42])
+	.domain([0.200,0.300])
     .range([height,0]);
 
 var chart = d3.select(".chart");
@@ -53,13 +80,17 @@ chart.attr("width",width + 2*margin)
     .attr("height",height + 2*margin)
     .append("g")
         .attr("transform","translate(" + margin + "," + margin + ")")
-    .selectAll("rect")
+    .selectAll("circle")
 	.data(data)
-    .enter().append("rect")
-    .attr("width",25)
+    .enter().append("circle")
+    .attr("width",45)
     .attr("height",function(d) { return height - y(d); })
     .attr("x",function(d,i) { return x(i); })
-    .attr("y",function(d) { return y(d); });
+    .attr("y",function(d) { return y(d); 
+	.attr("cx",function(d) { return 360+d.x; })
+    .attr("cy",function(d) { return 202.5+d.y; })
+    .attr("r",function(d) { return d.r / 2; })
+	.attr("fill","green");
 
 chart.append("g")
     .attr("transform", "translate(" + margin + "," + margin + ")")
