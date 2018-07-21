@@ -5,7 +5,8 @@
 
 <!-- Add in d3 library -->
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<!-- <style> .chart rect { fill: black } </style> -->
+
+
 
 <!-- TITLE OF WEBPAGE -->
 <head>
@@ -15,7 +16,7 @@
 
 <!-- WEBPAGE COMPONENTS -->
 <body>
-<h1> Data Visualization: MLB Performance based on Pitching vs Hitting over the past 5 years </h1>
+<h1> Data Visualization: MLB Performance based on Pitching and Hitting over the past 5 years </h1>
 <p>Start Here </p>
 
 	<div id="svg-chart" style="background-color:white">
@@ -31,7 +32,11 @@
     <rect></rect>
 </svg>
 
+
+<style> .chart rect { fill: black } </style>
 <script>
+
+
 
  d3.csv("mlb.csv", function(data) {
  console.log(data[0]);
@@ -41,6 +46,8 @@
 
 
 document.getElementById("data").innerHTML = data;
+var data = [0,1,2,3,4,5]
+
 d3.selectAll("rect")
 	.data(data)
     .attr("width",19)
