@@ -17,38 +17,14 @@
 <!-- WEBPAGE COMPONENTS -->
 <body>
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
-<p>Start Here <br>
+<p>Start Here 
+<br><br>
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
 
 	<div id="svg-chart" style="background-color:white">
-	<svg id="mainviz" width="500" height="500">
+	<svg class="chart">
 	<rect width="19" height="40" x="0" y="380" style = "fill:steelblue"></rect>
-	
-<script>
-	// Setup axes
-	
-var margin = {top: 40px, right: 40px, bottom: 40px, left: 40px};
-var width = 500 - margin.left - margin.right;
-var height = 500 - margin.top - margin.bottom;
-
-var x = d3.scale.linear()
-    .range([0, width]);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
-</script>
-	
 	</svg>
 	</div>
 
@@ -58,24 +34,42 @@ var yAxis = d3.svg.axis()
 // console.log(data[1]);
 // console.log(data[2]);
 // console.log(data[3]);
-	</script>
 
-<script>
-
-
-
-var data = [0,1,2,3,4,5]
-document.getElementById("data").innerHTML = data;
-d3.selectAll("rect")
-	.data(data)
-    .attr("width",19)
-    .attr("height",function(d) { return 10*d; })
-    .attr("x",function(d,i) { return 10; })
-    .attr("y",function(d) { return 10});
-});
+// Setup axes
+var margin = 30;
+var width = 500;
+var height = 500;
 	
-</script>
+var x = d3.scale.linear()
+    .domain([2,6])
+	.range([0, width]);
 
+var y = d3.scale.linear()
+    .domain([0.200,0.300])
+	.range(height, 0]);
+	
+var viz = d3.select(".chart");
+
+chart.attr("width",width + 2*margin)
+    .attr("height",height + 2*margin)
+    .append("g")
+        .attr("transform","translate(" + margin + "," + margin + ")")
+    .selectAll("rect")
+  .data(data)
+    .enter().append("rect")
+    .attr("width",19)
+    .attr("height",function(d) { return height - y(d); })
+    .attr("x",function(d,i) { return x(i); })
+    .attr("y",function(d) { return y(d); });
+
+chart.append("g")
+    .attr("transform", "translate(" + margin + "," + margin + ")")
+    .call(d3.axisLeft(y));
+	
+chart.append("g")
+    .attr("transform", "translate(" + margin + "," + (height+margin) + ")")
+    .call(d3.axisBottom(x));
+	
 <script>
 
 </body></html>
