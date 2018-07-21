@@ -19,11 +19,9 @@
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
 
-	<div id="viz-area" style="background-color:white">
-	<svg class="chart"></svg>
-	</div>
+<svg class="chart" style="background-color:white"></svg>
 
-	<script>
+<script>
 // d3.csv("mlb.csv", function(data) {
 // console.log(data[0]);
 // console.log(data[1]);
@@ -35,9 +33,10 @@ var margin = 30;
 var width = 500;
 var height = 500;
 
-
-
-var data = [4,8,15,16,23,42];
+var data = [
+{"x":4.5,"y":"0.220","r":1}
+{"x":3.5,"y":"0.260","r":1}
+];
 document.getElementById("data").innerHTML = data;
 
 
@@ -57,7 +56,8 @@ chart.attr("width",width + 2*margin)
     .append("g")
         .attr("transform","translate(" + margin + "," + margin + ")")
     .selectAll("rect")
-  .data(data)
+
+	chart.data(data)
     .enter().append("rect")
     .attr("width",19)
     .attr("height",function(d) { return height - y(d); })
@@ -71,6 +71,13 @@ chart.append("g")
 chart.append("g")
     .attr("transform", "translate(" + margin + "," + (height+margin) + ")")
     .call(d3.axisBottom(x));
+	
+chart.enter().append("circle").attr("cx",function(d) { return 360+d.x; })
+    .attr("cy",function(d) { return 202.5+d.y; })
+    .attr("r",function(d) { return d.r / 2; })
+.attr("fill","green");
+	
+chart.exit().remove();
 	
 <script>
 
