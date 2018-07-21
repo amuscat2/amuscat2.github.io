@@ -1,14 +1,8 @@
 /* Document styling */
 body {
-  background-color: #855858;
+  background-color: #6e95ff33;
   font-family: helvetica, sans-serif;
   font-weight: 100;
-}
-
-#wrapper {
-  width: 1200px;
-  margin: 0 auto;
-  position: relative;
 }
 
 #chart {
@@ -56,6 +50,14 @@ h2 {
   margin: 0;
   color: #666;
 }
+
+
+#wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
 
 ul {
   list-style: none;
