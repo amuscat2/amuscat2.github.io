@@ -108,13 +108,15 @@ vizarea.append("g")
     .call(d3.axisLeft(y))
 	.append("text")
     .attr("transform", "rotate(-90) translate(-20, 15)")
+	.attr("color","blue")
     .text("ON BASE PERCENTAGE (OBP)");
 
 vizarea.append("g")
     .attr("transform", "translate(" + margin.left + "," + (height+margin.top) + ")")
     .call(d3.axisBottom(x))
 	.append("text")
-    .attr("transform", "translate(width, -10)")
+    .attr("transform", "translate(750, -10)")
+	.attr("color","blue")
     .text("EARNED RUN AVERAGE (ERA)");
 	
 });
