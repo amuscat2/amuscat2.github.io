@@ -8,14 +8,14 @@ body {
 }
 
 #tooltip {			
-    width: 50px;					
-    height: 50px;					
+    width: 80px;					
+    height: 80px;					
     padding: 3px;	
     position: absolute;			
     text-align: center;		
-    font: 12px sans-serif;		
+    font: 10px sans-serif;		
     background: darkgrey;
-	color: white;
+	color: black;
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;
