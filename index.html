@@ -92,7 +92,7 @@ vizarea.selectAll("circle")
       .attr("r", 10)
       .attr("cx", function(d) { return x(d.era); })
       .attr("cy", function(d) { return y(d.obp); })
-      .style("fill", function(d) { return color(d.finish); });
+      .style("fill", function(d) { return color(d.finish); })
 	  .on("mouseover",function(d){
 		tooltip.style("opacity",1)
 			.style("left", (d3.event.pageX) + "px")		
