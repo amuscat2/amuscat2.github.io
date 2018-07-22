@@ -18,7 +18,7 @@
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
 <p>Start Here - Here we will vizualize the ERA vs OBP for the past 5 seasons including the current season.
 <br>
-Counter - 8
+Counter - 9
 <br>
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
@@ -30,7 +30,7 @@ Counter - 8
 <script>
 
 // Setup dimensions
-var margin = {top: 25, right: 25, bottom: 50, left: 30},
+var margin = {top: 25, right: 25, bottom: 50, left: 80},
     width = 750 - margin.right - margin.left,
     height = 600 - margin.top - margin.bottom;
 
@@ -99,7 +99,7 @@ vizarea.append("g")
 
 vizarea.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left)
+      .attr("y", 0 - margin.left + 10)
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
