@@ -23,7 +23,10 @@
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
 
-<svg class="chart" style="background-color:seashell"></svg>
+<svg class="chart" style="background-color:white"></svg>
+
+//Div for tooltip
+<div id="tooltip"></div>
 
 <script>
 
@@ -72,12 +75,16 @@ var y = d3.scaleLinear()
 //Set color scale for categorical parameters
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
+
 //modify svg for vizualization area
 var vizarea = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+//Tooltip variable
+var tooltip = d3.select("#tooltip");
 
 // Create the circles based on the criteria
 vizarea.selectAll("circle")
@@ -87,43 +94,14 @@ vizarea.selectAll("circle")
       .attr("cx", function(d) { return x(d.era); })
       .attr("cy", function(d) { return y(d.obp); })
       .style("fill", function(d) { return color(d.finish); });
-	  
-//Tooltip Div
-var div = d3.select("body").append("div")	
-    .attr("class", "tooltip")				
-    .style("opacity", 0);
-	  
-//add tooltip
- vizarea.on("mouseover", function(d) {		
-            div.transition()		
-                .duration(100)		
-                .style("opacity", 1);		
-            div.html("THIS IS A TOOLTIP ")	
-                .style("left", (d3.event.pageX) + "px")		
-                .style("top", (d3.event.pageY) + "px");	
-            })					
-        .on("mouseout", function(d) {		
-            div.transition()		
-                .duration(300)		
-                .style("opacity", 0);	
-        });
-
-//chart.attr("width",width + 2*margin)
-//    .attr("height",height + 2*margin)
-//    .append("g")
-//        .attr("transform","translate(" + margin + "," + margin + ")")
- //   .selectAll("circle")
-	//.data(data)
-    //.enter().append("circle")
-    //.attr("width",45)
-//    .attr("height",function(d) { return height - y(d); })
-//    .attr("x",function(d,i) { return x(i); })
-//    .attr("y",function(d) { return y(d); 
-//	.attr("cx",function(d) { return 360+ d.era; })
-//    .attr("cy",function(d) { return 202.5+ d.obp; })
- //   .attr("r",function(d) { return d.r / 2; })
-//	.attr("fill","green");
-
+	  .on("mouseover",function(d){
+		tooltip.style("opacity",1)
+			.style("left", (d3.event.pageX) + "px")		
+			.style("top", (d3.event.pageY) + "px")
+			.html(<strong>"Team Name: "</strong> + d.teamname );
+		})
+	.on("mouseout", function() {tooltip.style("opacity",0)});
+	
 	
 	
 vizarea.append("g")

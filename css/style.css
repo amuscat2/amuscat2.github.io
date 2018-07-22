@@ -14,11 +14,12 @@ body {
     position: absolute;			
     text-align: center;		
     font: 12px sans-serif;		
-    background: lightgrey;	
+    background: darkgrey;
+	color: white;
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;
-	opacity
+	opacity: 0;
 }
 
 .axis path,
