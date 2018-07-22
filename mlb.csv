@@ -1,4 +1,4 @@
-year,team,teamname,ops,era,winpct,homerun,battingavg,finish
+year,team,teamname,obp,era,winpct,homerun,battingavg,finish
 2018,ARI,Arizona Diamondbacks (NL),0.307,3.62,54.6,107,0.229,-
 2018,ATL,Atlanta Braves (NL),0.326,3.83,55.3,101,0.258,P
 2018,BAL,Baltimore Orioles (AL),0.29,4.87,28.9,111,0.227,-
