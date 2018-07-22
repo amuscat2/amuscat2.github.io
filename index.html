@@ -28,12 +28,15 @@
 <script>
 
 // Setup dimensions
-var margin = 40;
-    width = 750 - 2*margin,
-    height = 500 - 2* margin;
+var margin = {top: 30, right: 30, bottom: 40, left: 40},
+    width = 750 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
 
 //Get data
 d3.csv("mlb.csv", function(error, data) {
+
+	if (error) throw error;
+	
     data.forEach(function(d) {
         d.year = +d.year;
         d.team = +d.team;
@@ -49,7 +52,7 @@ d3.csv("mlb.csv", function(error, data) {
 	console.log(data[2]);
     });
 	
-
+//setup axes with constant domain as data variables don't vary past specific ranges
 var x = d3.scaleLinear()
 	.domain([2,6])
     .range([0,width]);
@@ -57,9 +60,30 @@ var x = d3.scaleLinear()
 var y = d3.scaleLinear()
 	.domain([0.200,0.300])
     .range([height,0]);
+	
+//Set color scale for categorical parameters
+var color = d3.scale.category10();
 
-var chart = d3.select(".chart");
+//create a svg for vizualization area
+var vizarea = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+// Create the circles based on the criteria
+vizarea.selectAll("circle")
+      .data(data)
+    .enter().append("circle")
+      .attr("r", 5)
+      .attr("cx", function(d) { return x(d.era); })
+      .attr("cy", function(d) { return y(d.ops); })
+      .style("fill", function(d) { return color(d.year); });
+
+
+	
+	
+	
 chart.attr("width",width + 2*margin)
     .attr("height",height + 2*margin)
     .append("g")
@@ -71,11 +95,13 @@ chart.attr("width",width + 2*margin)
     .attr("height",function(d) { return height - y(d); })
     .attr("x",function(d,i) { return x(i); })
     .attr("y",function(d) { return y(d); 
-	.attr("cx",function(d) { return 360+d.era; })
-    .attr("cy",function(d) { return 202.5+d.ops; })
+	.attr("cx",function(d) { return 360+ d.era; })
+    .attr("cy",function(d) { return 202.5+ d.ops; })
     .attr("r",function(d) { return d.r / 2; })
 	.attr("fill","green");
 
+	
+	
 chart.append("g")
     .attr("transform", "translate(" + margin + "," + margin + ")")
     .call(d3.axisLeft(y));
