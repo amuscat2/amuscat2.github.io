@@ -18,7 +18,7 @@
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
 <p>Start Here - Here we will vizualize the ERA vs OBP for the past 5 seasons including the current season.
 <br>
-3
+4
 <br>
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
@@ -28,7 +28,7 @@
 <script>
 
 // Setup dimensions
-var margin = {top: 30, right: 30, bottom: 40, left: 40},
+var margin = {top: 40, right: 40, bottom: 50, left: 50},
     width = 750 - margin.right - margin.left,
     height = 500 - margin.top - margin.bottom;
 
@@ -64,8 +64,8 @@ var y = d3.scaleLinear()
 //Set color scale for categorical parameters
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-//create a svg for vizualization area
-var vizarea = d3.select("body").append("svg")
+//modify svg for vizualization area
+var vizarea = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -103,11 +103,11 @@ vizarea.selectAll("circle")
 	
 	
 vizarea.append("g")
-    .attr("transform", "translate(" + margin.top + "," + margin.bottom + ")")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .call(d3.axisLeft(y));
 
 vizarea.append("g")
-    .attr("transform", "translate(" + margin.left + "," + (height+margin.right) + ")")
+    .attr("transform", "translate(" + margin.left + "," + (height+margin.top) + ")")
     .call(d3.axisBottom(x));
 	
 });
