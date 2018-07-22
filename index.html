@@ -23,7 +23,7 @@
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
 
-<svg class="chart" style="background-color:white"></svg>
+<svg class="chart" style="background-color:seashell"></svg>
 
 <script>
 
@@ -69,8 +69,8 @@ chart.attr("width",width + 2*margin)
     .attr("height",function(d) { return height - y(d); })
     .attr("x",function(d,i) { return x(i); })
     .attr("y",function(d) { return y(d); 
-	.attr("cx",function(d) { return 360+d.x; })
-    .attr("cy",function(d) { return 202.5+d.y; })
+	.attr("cx",function(d) { return 360+d.era; })
+    .attr("cy",function(d) { return 202.5+d.ops; })
     .attr("r",function(d) { return d.r / 2; })
 	.attr("fill","green");
 
