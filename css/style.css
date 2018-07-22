@@ -3,5 +3,14 @@ body {
   background-color: #6e95ff33;
   font-family: arial, sans-serif;
   font-weight: 100;
-  color: steel blue;
+  
+  color: darkblue;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: darkblue;
+    stroke-width: 3;
+    shape-rendering: crispEdges;
 }

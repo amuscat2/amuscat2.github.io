@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Add in d3 library -->
+<!-- Load in d3 library -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <meta charset="utf-8">
@@ -26,45 +26,27 @@
 <svg class="chart" style="background-color:white"></svg>
 
 <script>
-// d3.csv("mlb.csv", function(data) {
-// console.log(data[0]);
-// console.log(data[1]);
-// console.log(data[2]);
-// console.log(data[3]);
 
-// Setup axes
-var margin = 30;
-var width = 500;
-var height = 500;
+// Setup dimensions
+var margin = 40;
+    width = 750 - 2*margin,
+    height = 500 - 2* margin;
 
-var data = 
-[
-    {
-        "x": 30,
-        "y": 40,
-        "r": 3
-    },
-    {
-        "x": 150,
-        "y": 80,
-        "r": 2
-    },
-    {
-        "x": -180,
-        "y": -50,
-        "r": 5
-    },
-    {
-        "x": 100,
-        "y": -120,
-        "r": 10
-    },
-    {
-        "x": -10,
-        "y": 20,
-        "r": 18
-    }
-]; 
+//Get data
+d3.csv("mlb.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.year = +d.year;
+        d.team = +d.team;
+		d.teamname = +d.teamname;
+		d.ops = +d.ops;
+		d.era = +d.era;
+		d.winpct = +d.winpct;
+		d.homerun = +d.homerun;
+		d.battingavg = +d.battigavg;
+		d.finish = +d.finish;
+    });
+	console.log(data[0]);
+	
 
 var x = d3.scaleLinear()
 	.domain([2,6])
