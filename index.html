@@ -80,21 +80,14 @@ vizarea.selectAll("circle")
 
 
 //create axes labels
-  vizarea.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .append("text")
+  vizarea.append("text")
       .attr("class", "label")
       .attr("x", width)
       .attr("y", -6)
       .style("text-anchor", "end")
       .text("EARNED RUN AVERAGE (ERA)");
 
-  vizarea.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
+  vizarea.append("text")
       .attr("class", "label")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
