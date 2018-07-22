@@ -31,8 +31,8 @@ Counter - 1
 
 // Setup dimensions
 var margin = {top: 25, right: 25, bottom: 50, left: 25},
-    width = 1000 - margin.right - margin.left,
-    height = 500 - margin.top - margin.bottom;
+    width = 750 - margin.right - margin.left,
+    height = 600 - margin.top - margin.bottom;
 
 //Get data
 d3.csv("mlb.csv", function(error, data) {
@@ -100,16 +100,22 @@ vizarea.selectAll("circle")
 			.html("Team Name: "+ (d.teamname));
 		})
 	.on("mouseout", function() {tooltip.style("opacity",0)});
-	
-	
+
+
 	
 vizarea.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y))
+	.append("text")
+    .attr("transform", "rotate(-90) translate(-20, 15)")
+    .text("ON BASE PERCENTAGE (OBP)");
 
 vizarea.append("g")
     .attr("transform", "translate(" + margin.left + "," + (height+margin.top) + ")")
     .call(d3.axisBottom(x));
+	.append("text")
+    .attr("transform", "translate(width, -10)")
+    .text("EARNED RUN AVERAGE (ERA)");
 	
 });
 
