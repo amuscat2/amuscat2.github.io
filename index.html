@@ -18,7 +18,7 @@
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
 <p>Start Here - Here we will vizualize the ERA vs OBP for the past 5 seasons including the current season.
 <br>
-Counter - 4
+Counter - 5
 <br>
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
@@ -105,20 +105,27 @@ vizarea.selectAll("circle")
 	
 vizarea.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    .call(d3.axisLeft(y))
-	.append("text")
-    .attr("transform", "rotate(-90) translate(-20, 15)")
-	.attr("color","blue")
-    .text("ON BASE PERCENTAGE (OBP)");
+    .call(d3.axisLeft(y));
 
+vizarea.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+	  .style("color", "blue")
+      .text("ON BASE PERCENTAGE (OBP)");  
+	
 vizarea.append("g")
     .attr("transform", "translate(" + margin.left + "," + (height+margin.top) + ")")
-    .call(d3.axisBottom(x))
-	.append("text")
-    .attr("transform", "translate(750, -10)")
-	.attr("color","blue")
-    .text("EARNED RUN AVERAGE (ERA)");
+    .call(d3.axisBottom(x));
 	
+vizarea.append("text")             
+      .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+	  .style("color", "blue")
+      .text("EARNED RUN AVERAGE (ERA)");
+ 
 });
 
 </script>
