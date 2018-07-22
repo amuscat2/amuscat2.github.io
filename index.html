@@ -45,7 +45,7 @@ d3.csv("mlb.csv", function(error, data) {
 		d.era = +d.era;
 		d.winpct = +d.winpct;
 		d.homerun = +d.homerun;
-		d.battingavg = +d.battigavg;
+		d.battingavg = +d.battingavg;
 		d.finish = +d.finish;
 	console.log(data[0]);
     });
@@ -73,7 +73,7 @@ var vizarea = d3.select(".chart")
 vizarea.selectAll("circle")
       .data(data)
     .enter().append("circle")
-      .attr("r", 5)
+      .attr("r", 10)
       .attr("cx", function(d) { return x(d.era); })
       .attr("cy", function(d) { return y(d.ops); })
       .style("fill", function(d) { return color(d.year); });
