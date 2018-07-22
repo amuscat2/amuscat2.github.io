@@ -28,8 +28,8 @@
 <script>
 
 // Setup dimensions
-var margin = {top: 40, right: 40, bottom: 50, left: 50},
-    width = 750 - margin.right - margin.left,
+var margin = {top: 25, right: 25, bottom: 50, left: 50},
+    width = 1000 - margin.right - margin.left,
     height = 500 - margin.top - margin.bottom;
 
 //Get data
@@ -58,7 +58,7 @@ var x = d3.scaleLinear()
     .range([0,width]);
     
 var y = d3.scaleLinear()
-	.domain([0.200,0.300])
+	.domain([0.250,0.400])
     .range([height,0]);
 	
 //Set color scale for categorical parameters
