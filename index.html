@@ -97,7 +97,7 @@ vizarea.selectAll("circle")
 		tooltip.style("opacity",1)
 			.style("left", (d3.event.pageX) + "px")		
 			.style("top", (d3.event.pageY) + "px")
-			.html(<strong>"Team Name: "</strong>);
+			.html("Team Name: "+ (d.team.name));
 		})
 	.on("mouseout", function() {tooltip.style("opacity",0)});
 	
