@@ -51,7 +51,6 @@ d3.csv("mlb.csv", function(error, data) {
 	console.log(data[1]);
 	console.log(data[2]);
     });
-};
 	
 //setup axes with constant domain as data variables don't vary past specific ranges
 var x = d3.scaleLinear()
@@ -111,6 +110,8 @@ chart.append("g")
     .attr("transform", "translate(" + margin + "," + (height+margin) + ")")
     .call(d3.axisBottom(x));
 	
+});
+
 </script>
 
 </body></html>
