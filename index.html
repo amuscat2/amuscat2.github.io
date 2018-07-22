@@ -39,14 +39,14 @@ d3.csv("mlb.csv", function(error, data) {
 	
     data.forEach(function(d) {
         d.year = +d.year;
-        d.team = +d.team;
-		d.teamname = +d.teamname;
+        d.team = d.team;
+		d.teamname = d.teamname;
 		d.obp = +d.obp;
 		d.era = +d.era;
 		d.winpct = +d.winpct;
 		d.homerun = +d.homerun;
 		d.battingavg = +d.battingavg;
-		d.finish = +d.finish;
+		d.finish = d.finish;
 	console.log(data[0]);
     });
 	
