@@ -84,21 +84,21 @@ vizarea.selectAll("circle")
 	
 	
 	
-chart.attr("width",width + 2*margin)
-    .attr("height",height + 2*margin)
-    .append("g")
-        .attr("transform","translate(" + margin + "," + margin + ")")
-    .selectAll("circle")
-	.data(data)
-    .enter().append("circle")
-    .attr("width",45)
-    .attr("height",function(d) { return height - y(d); })
-    .attr("x",function(d,i) { return x(i); })
-    .attr("y",function(d) { return y(d); 
-	.attr("cx",function(d) { return 360+ d.era; })
-    .attr("cy",function(d) { return 202.5+ d.ops; })
-    .attr("r",function(d) { return d.r / 2; })
-	.attr("fill","green");
+//chart.attr("width",width + 2*margin)
+//    .attr("height",height + 2*margin)
+//    .append("g")
+//        .attr("transform","translate(" + margin + "," + margin + ")")
+ //   .selectAll("circle")
+	//.data(data)
+    //.enter().append("circle")
+    //.attr("width",45)
+//    .attr("height",function(d) { return height - y(d); })
+//    .attr("x",function(d,i) { return x(i); })
+//    .attr("y",function(d) { return y(d); 
+//	.attr("cx",function(d) { return 360+ d.era; })
+//    .attr("cy",function(d) { return 202.5+ d.ops; })
+ //   .attr("r",function(d) { return d.r / 2; })
+//	.attr("fill","green");
 
 	
 	
