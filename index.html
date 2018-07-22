@@ -18,7 +18,7 @@
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
 <p>Start Here - Here we will vizualize the ERA vs OBP for the past 5 seasons including the current season.
 <br>
-1
+2
 <br>
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
@@ -44,8 +44,10 @@ d3.csv("mlb.csv", function(error, data) {
 		d.homerun = +d.homerun;
 		d.battingavg = +d.battigavg;
 		d.finish = +d.finish;
-    });
 	console.log(data[0]);
+	console.log(data[1]);
+	console.log(data[2]);
+    });
 	
 
 var x = d3.scaleLinear()
