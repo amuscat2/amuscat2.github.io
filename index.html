@@ -92,7 +92,7 @@ vizarea.selectAll("circle")
 	.on("mouseout", function() {tooltip.style("opacity",0)});
 
 
-	
+// Create the y and x axis and their centered labels
 vizarea.append("g")
     .call(d3.axisLeft(y));
 
@@ -118,6 +118,7 @@ vizarea.append("text")
 //create fliterable legend for year
 legend = vizarea.append("g")
   .attr("class","legend")
+  
   .attr("transform","translate(width-100,height-100)")
   .style("font-size","12px")
   .call(d3.legend)
