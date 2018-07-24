@@ -212,6 +212,13 @@ d3.csv("mlb2.csv", function(error, data) {
 		  .attr("cx", function(d) { return x(d.era); })
 		  .attr("cy", function(d) { return y(d.obp); })
 		  .style("fill", function(d) { return color(d.finish); })
+		.data(data).enter().append("text")
+		.text(function(d){return "text";})
+		.attr("x", function(d) { return x(d.era); })
+		.attr("y", function(d) { return y(d.obp); })
+		.style("text-anchor", "middle")
+		.style("color","blue")
+	
 		  .on("mouseover",function(d){
 			tooltip.style("opacity",1)
 				.style("left", (d3.event.pageX) + "px")		
@@ -219,15 +226,6 @@ d3.csv("mlb2.csv", function(error, data) {
 				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
 			})
 		.on("mouseout", function() {tooltip.style("opacity",0)});
-
-//Add text labels for 2018
-	vizarea.selectAll("circle")
-		.data(data).enter().append("text")
-		.text(function(d){return "text";})
-		.attr("x", function(d) { return x(d.era); })
-		.attr("y", function(d) { return y(d.obp); })
-		.style("text-anchor", "middle")
-		.style("color","blue");
 	
 });
 
