@@ -126,6 +126,7 @@ a.step-link {
   padding: 10px;
   background-color: black;
   color: white;
+  text-decoration: none;
 }
 
 a.step-link:hover, a.active {

@@ -30,7 +30,7 @@ There are many statistics in baseball that could be used to measure pitching and
     <input name="updateButton" 
            type="button" 
            value="2014 - 2017" 
-           onclick="updateData()" />
+           onclick="updateData1()" />
 		   
     <input name="updateButton" 
            type="button" 
@@ -148,65 +148,91 @@ var vizarea = d3.select(".chart")
 	
 //Tooltip variable
 var tooltip = d3.select("#tooltip");
+
+//svg.selectAll("*").remove();
 	
 // Create the y and x axis
-vizarea.append("g")
-    .call(d3.axisLeft(y));
+	vizarea.append("g")
+		.call(d3.axisLeft(y));
 
-vizarea.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+	vizarea.append("g")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x));
 
-// Create the axes labels
-vizarea.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left + 10)
-      .attr("x",0 - (height / 2))
-      .attr("dy", "1em")
-      .style("text-anchor", "middle")
-	  .style("color", "blue")
-      .text("ON BASE PERCENTAGE (OBP)");  	
-	
-vizarea.append("text")             
-      .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
-      .style("text-anchor", "middle")
-	  .style("color", "blue")
-      .text("EARNED RUN AVERAGE (ERA)");	
+	// Create the axes labels
+	vizarea.append("text")
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 0 - margin.left + 10)
+		  .attr("x",0 - (height / 2))
+		  .attr("dy", "1em")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .text("ON BASE PERCENTAGE (OBP)");  	
+		
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .text("EARNED RUN AVERAGE (ERA)");	
 
-//Get data for 2014 - 2017
-d3.csv("mlb.csv", function(error, data) {
+		  
+	//Get data for 2014 - 2017
+	d3.csv("mlb.csv", function(error, data) {
 
-	if (error) throw error;
-	
-    data.forEach(function(d) {
-        d.year = +d.year;
-        d.team = d.team;
-		d.teamname = d.teamname;
-		d.obp = +d.obp;
-		d.era = +d.era;
-		d.winpct = +d.winpct;
-		d.homerun = +d.homerun;
-		d.battingavg = +d.battingavg;
-		d.finish = d.finish;
+		if (error) throw error;
+		
+		data.forEach(function(d) {
+			d.year = +d.year;
+			d.team = d.team;
+			d.teamname = d.teamname;
+			d.obp = +d.obp;
+			d.era = +d.era;
+			d.winpct = +d.winpct;
+			d.homerun = +d.homerun;
+			d.battingavg = +d.battingavg;
+			d.finish = d.finish;
+		});
+		
+	// Create the circles based on the criteria
+	vizarea.selectAll("circle")
+		  .data(data)
+		.enter().append("circle")
+		  .attr("r", 9)
+		  .attr("cx", function(d) { return x(d.era); })
+		  .attr("cy", function(d) { return y(d.obp); })
+		  .style("fill", function(d) { return color(d.finish); })
+		  .on("mouseover",function(d){
+			tooltip.style("opacity",1)
+				.style("left", (d3.event.pageX) + "px")		
+				.style("top", ((d3.event.pageY)-220) + "px")
+				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+			})
+		.on("mouseout", function() {tooltip.style("opacity",0)});
+		
 	});
-	
-// Create the circles based on the criteria
-vizarea.selectAll("circle")
-      .data(data)
-    .enter().append("circle")
-      .attr("r", 9)
-      .attr("cx", function(d) { return x(d.era); })
-      .attr("cy", function(d) { return y(d.obp); })
-      .style("fill", function(d) { return color(d.finish); })
-	  .on("mouseover",function(d){
-		tooltip.style("opacity",1)
-			.style("left", (d3.event.pageX) + "px")		
-			.style("top", ((d3.event.pageY)-220) + "px")
-			.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
-		})
-	.on("mouseout", function() {tooltip.style("opacity",0)});
 
-});
+	
+	//Legend
+	var legend = vizarea.selectAll('g')
+		.data(data)
+		.enter()
+		.append('g')
+		.attr('class', 'legend');
+		
+	 legend.append('rect')
+		  .attr('x', width - 50)
+		  .attr('y', 20)
+		  .attr('width', 50)
+		  .attr('height', 50)
+		  .style('fill', function(d) { 
+			return color(d.finish);
+		  });
+		  
+	 legend.append('text')
+		  .attr('x', width - 45)
+		  .attr('y', 20)
+		  .text(function(d){ return d.finish; });
+
 
 
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
@@ -292,7 +318,7 @@ d3.selectAll("a.step-link").on("click", function(d) {
 
 	}
 
-	function updateData() {
+	function updateData1() {
 	
 	// clearing out the previous data circles
 	vizarea.selectAll("circle").remove();
