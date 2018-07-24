@@ -282,7 +282,7 @@ vizarea.selectAll("circle")
 		vizarea.selectAll("text")
 			.data(data).enter().append("text")
 			.text(function(d){return "text";})
-			.attr("x", function(d) { return x(d.era); })
+			.attr("x", function(d) { return x(d.era)+5; })
 			.attr("y", function(d) { return y(d.obp); })
 			.style("color","blue");	
 
