@@ -29,8 +29,13 @@ There are many statistics in baseball that could be used to measure pitching and
 <div id="option">
     <input name="updateButton" 
            type="button" 
-           value="2018 Only" 
+           value="2014 - 2017" 
            onclick="updateData()" />
+		   
+    <input name="updateButton" 
+           type="button" 
+           value="2018 Only" 
+           onclick="updateData2()" />
 </div>
 
 <br>
@@ -181,19 +186,9 @@ vizarea.selectAll("circle")
 	.on("mouseout", function() {tooltip.style("opacity",0)});
 
 	
-
-//Add text labels for 2018
-	vizarea.selectAll("circle")
-		.data(data).enter().append("text")
-		.text(function(d){return "text";})
-		.attr("x", function(d) { return x(d.era); })
-		.attr("y", function(d) { return y(d.obp); })
-		.style("text-anchor", "middle")
-		.style("color","blue");	
-	
 });
 
-function updateData() {
+function updateData2() {
 
 // clearing out the previous data circles
 vizarea.selectAll("circle").remove();
@@ -230,10 +225,67 @@ d3.csv("mlb2.csv", function(error, data) {
 				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
 			})
 		.on("mouseout", function() {tooltip.style("opacity",0)});
-
+		
 	
+//Add text labels for 2018
+	vizarea.selectAll("circle")
+		.data(data).enter().append("text")
+		.text(function(d){return "text";})
+		.attr("x", function(d) { return x(d.era); })
+		.attr("y", function(d) { return y(d.obp); })
+		.style("color","blue");	
+
 });
 
+
+function updateData() {
+
+// clearing out the previous data circles
+vizarea.selectAll("circle").remove();
+
+// load data again
+d3.csv("mlb.csv", function(error, data) {
+
+	if (error) throw error;
+	
+    data.forEach(function(d) {
+        d.year = +d.year;
+        d.team = d.team;
+		d.teamname = d.teamname;
+		d.obp = +d.obp;
+		d.era = +d.era;
+		d.winpct = +d.winpct;
+		d.homerun = +d.homerun;
+		d.battingavg = +d.battingavg;
+		d.finish = d.finish;
+	});
+	
+// Create the circles based on the criteria
+	vizarea.selectAll("circle")
+		.data(data)
+		.enter().append("circle")
+		  .attr("r", 9)
+		  .attr("cx", function(d) { return x(d.era); })
+		  .attr("cy", function(d) { return y(d.obp); })
+		  .style("fill", function(d) { return color(d.finish); })
+		  .on("mouseover",function(d){
+			tooltip.style("opacity",1)
+				.style("left", (d3.event.pageX) + "px")		
+				.style("top", ((d3.event.pageY)-220) + "px")
+				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+			})
+		.on("mouseout", function() {tooltip.style("opacity",0)});
+		
+	
+//Add text labels for 2018
+	vizarea.selectAll("circle")
+		.data(data).enter().append("text")
+		.text(function(d){return "text";})
+		.attr("x", function(d) { return x(d.era); })
+		.attr("y", function(d) { return y(d.obp); })
+		.style("color","blue");	
+
+});
  
 }
 
