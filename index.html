@@ -136,7 +136,7 @@ var y = d3.scaleLinear()
     .range([height,0]);
 	
 //Set color scale for categorical parameters
-var color = d3.scaleOrdinal(d3.schemeCategory20);
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 // Not Necessary
 //var symbols = d3.scaleOrdinal(d3.symbols);
@@ -249,11 +249,10 @@ var tooltip = d3.select("#tooltip");
 	  });
 	 
 	  legend.append("text")
-		  .attr("x", width - 24)
-		  .attr("y", 9)
-		  .attr("dy", ".35em")
-		  .style("text-anchor", "end")
-		  .text(function(d) { return d.finish; });
+		  .attr('x', width - 15)
+		  .attr('y',  function(d,i) { 20*i + 5;} )
+		  .text(function(d){ return d.finish; });
+
 		
 	});
 
