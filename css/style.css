@@ -122,13 +122,12 @@ body {
 
 /* Basic styling for the step links */
 a.step-link {
-  padding: 5px;
-  background-color: #444;
-  color: #666;
-  text-decoration: none;
+  padding: 10px;
+  background-color: black;
+  color: white;
 }
 
 a.step-link:hover, a.active {
-  color: #ddd;
+  color: red;
 }
 
