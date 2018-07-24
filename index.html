@@ -100,6 +100,7 @@ var margin = {top: 25, right: 25, bottom: 50, left: 80},
     width = 960 - margin.right - margin.left,
     height = 700 - margin.top - margin.bottom;
 
+//setup axes with constant domain as data variables don't vary past specific ranges
 var x = d3.scaleLinear()
 	.domain([2.5,5.5])
     .range([0,width]);
@@ -162,9 +163,6 @@ d3.csv("mlb.csv", function(error, data) {
 		d.battingavg = +d.battingavg;
 		d.finish = d.finish;
 	});
-
-	
-//setup axes with constant domain as data variables don't vary past specific ranges
 	
 // Create the circles based on the criteria
 vizarea.selectAll("circle")
@@ -186,9 +184,10 @@ vizarea.selectAll("circle")
 
 function updateData() {
 
-// clearing out the previous circles
+// clearing out the previous data circles
 vizarea.selectAll("circle").remove();
- 
+
+// load data again
 d3.csv("mlb2.csv", function(error, data) {
 
 	if (error) throw error;
@@ -204,9 +203,6 @@ d3.csv("mlb2.csv", function(error, data) {
 		d.battingavg = +d.battingavg;
 		d.finish = d.finish;
 	});
-
-	
-//setup axes with constant domain as data variables don't vary past specific ranges
 	
 // Create the circles based on the criteria
 vizarea.selectAll("circle")
@@ -224,6 +220,9 @@ vizarea.selectAll("circle")
 		})
 	.on("mouseout", function() {tooltip.style("opacity",0)});
 
+vizarea.append("text").text(function(d){
+                    return d.team;
+	
 });
 
  
