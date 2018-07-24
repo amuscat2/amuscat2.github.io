@@ -220,7 +220,7 @@ var tooltip = d3.select("#tooltip");
 	
 	  var clicked = ""
   
-	  var legend = svg.selectAll(".legend")
+	  var legend = vizarea.selectAll(".legend")
 		.data(color.domain())
 	  .enter().append("g")
 		.attr("class", "legend")
