@@ -133,6 +133,12 @@ var tooltip = d3.select("#tooltip");
 vizarea.append("g")
     .call(d3.axisLeft(y));
 
+vizarea.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+	
+	
 vizarea.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left + 10)
@@ -140,11 +146,7 @@ vizarea.append("text")
       .attr("dy", "1em")
       .style("text-anchor", "middle")
 	  .style("color", "blue")
-      .text("ON BASE PERCENTAGE (OBP)");  
-	
-vizarea.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+      .text("ON BASE PERCENTAGE (OBP)");  	
 	
 vizarea.append("text")             
       .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
@@ -190,7 +192,7 @@ vizarea.selectAll("circle")
 
 	function updateData2() {
 
-
+		vizarea.selectAll("text").remove();
 	
 	// clearing out the previous data circles
 	vizarea.selectAll("circle").remove();
@@ -237,6 +239,22 @@ vizarea.selectAll("circle")
 			.attr("y", function(d) { return y(d.obp); })
 			.style("color","blue");	
 
+		
+		vizarea.append("text")
+			  .attr("transform", "rotate(-90)")
+			  .attr("y", 0 - margin.left + 10)
+			  .attr("x",0 - (height / 2))
+			  .attr("dy", "1em")
+			  .style("text-anchor", "middle")
+			  .style("color", "blue")
+			  .text("ON BASE PERCENTAGE (OBP)");  	
+			
+		vizarea.append("text")             
+			  .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+			  .style("text-anchor", "middle")
+			  .style("color", "blue")
+			  .text("EARNED RUN AVERAGE (ERA)");			
+			
 	});
 
 	}
@@ -281,6 +299,22 @@ vizarea.selectAll("circle")
 				})
 			.on("mouseout", function() {tooltip.style("opacity",0)});
 			
+		vizarea.append("text")
+			  .attr("transform", "rotate(-90)")
+			  .attr("y", 0 - margin.left + 10)
+			  .attr("x",0 - (height / 2))
+			  .attr("dy", "1em")
+			  .style("text-anchor", "middle")
+			  .style("color", "blue")
+			  .text("ON BASE PERCENTAGE (OBP)");  	
+			
+		vizarea.append("text")             
+				.attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+				  .style("text-anchor", "middle")
+				  .style("color", "blue")
+				  .text("EARNED RUN AVERAGE (ERA)");			
+
+	
 	
 	});
  
