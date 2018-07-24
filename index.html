@@ -29,7 +29,7 @@ There are many statistics in baseball that could be used to measure pitching and
 <div id="option">
     <input name="updateButton" 
            type="button" 
-           value="2018" 
+           value="2018 Only" 
            onclick="updateData()" />
 </div>
 
@@ -189,7 +189,7 @@ function updateData() {
 // clearing out the previous circles
 vizarea.selectAll("circle").remove();
  
-d3.csv("mlb.csv", function(error, data) {
+d3.csv("mlb2.csv", function(error, data) {
 
 	if (error) throw error;
 	
