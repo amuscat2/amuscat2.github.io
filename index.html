@@ -15,6 +15,14 @@
 <!-- WEBPAGE COMPONENTS -->
 <body>
 
+<div id="option">
+    <input name="updateButton" 
+           type="button" 
+           value="Update" 
+           onclick="updateData()" />
+</div>
+
+
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
 <p>This visualization aims to looks at Major League Baseball (MLB) statistics for the past 5 seasons including the current season.
 <br>
@@ -94,30 +102,6 @@ There are many statistics in baseball that could be used to measure pitching and
 
 <script>
 
-function switchStep(newStep)
-{
-  d3.selectAll(".step-link").classed("active", false);
-  d3.select("#" + newStep).classed("active", true);
-}
-
-function switchAnnotation(newStep)
-{
-  d3.selectAll(".annotation-step")
-    .style("display", "none")
-    .style("opacity", 0.0);
-
-  d3.select("#" + newStep + "-annotation")
-    .style("display", "block")
-    .transition().delay(300).duration(500)
-      .style("opacity", 1);
-}
-
-d3.selectAll("a.step-link").on("click", function(d) {
-  var clickedStep = d3.select(this).attr("id");
-  switchStep(clickedStep);
-  switchAnnotation(clickedStep);
-  return false;
-});
 
 
 // Setup dimensions
@@ -213,6 +197,58 @@ legend = vizarea.append("g")
   .attr("transform","translate(width-100,height-100)")
   .style("font-size","12px")
   .call(d3.legend)
+ 
+
+function updateData() {
+
+    // Get the data again
+  d3.csv("mlb.csv", function(error, data) {
+
+	if (error) throw error;
+	
+    data.forEach(function(d) {
+        d.year = +d.year;
+        d.team = d.team;
+		d.teamname = d.teamname;
+		d.obp = +d.obp;
+		d.era = +d.era;
+		d.winpct = +d.winpct;
+		d.homerun = +d.homerun;
+		d.battingavg = +d.battingavg;
+		d.finish = d.finish;
+	});
+
+    });
+}
+
+function switchStep(newStep)
+{
+  d3.selectAll(".step-link").classed("active", false);
+  d3.select("#" + newStep).classed("active", true);
+}
+
+function switchAnnotation(newStep)
+{
+  d3.selectAll(".annotation-step")
+    .style("display", "none")
+    .style("opacity", 0.0);
+
+  d3.select("#" + newStep + "-annotation")
+    .style("display", "block")
+    .transition().delay(300).duration(500)
+      .style("opacity", 1);
+}
+
+d3.selectAll("a.step-link").on("click", function(d) {
+  var clickedStep = d3.select(this).attr("id");
+  switchStep(clickedStep);
+  switchAnnotation(clickedStep);
+  return false;
+});
+
+ 
+ 
+ 
  
 });
 

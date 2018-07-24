@@ -90,6 +90,7 @@ body {
   position: absolute;
 }
 
+/* annotation postioning */
 #step1-left-annotation {
   left: 30px;
   top: 120px;
