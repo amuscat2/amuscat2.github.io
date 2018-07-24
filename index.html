@@ -51,6 +51,8 @@ There are many statistics in baseball that could be used to measure pitching and
 
 <!--Container for visualization-->
 <div id="totalviz">
+
+<!--DIV for annotations-->  
   <div id="annotations">
 
     <!--Each steps annotation contained in a div-->
@@ -93,10 +95,23 @@ There are many statistics in baseball that could be used to measure pitching and
 
   
 <!--Vizualition DIV-->  
-<div id="vis-canvas">
-	<svg class="chart" style="background-color:white"></svg>
-	<div id="tooltip"></div>
-  </div>
+	<div id="vis-canvas">
+		<svg class="chart" style="background-color:white"></svg>
+		<div id="tooltip"></div>
+	</div>
+	
+<!--DIV for Brushed Table-->  
+<div id="table">
+        <table>
+            <tr>
+                <th>Team Name</th>
+                <th>Year</th> 
+                <th>Finished Rank</th> 
+            </tr>
+        </table>
+    </div>
+	
+	
 </div>
 
 
@@ -198,6 +213,32 @@ vizarea.selectAll("circle")
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
+
+function switchStep(newStep)
+{
+  d3.selectAll(".step-link").classed("active", false);
+  d3.select("#" + newStep).classed("active", true);
+}
+
+function switchAnnotation(newStep)
+{
+  d3.selectAll(".annotation-step")
+    .style("display", "none")
+    .style("opacity", 0.0);
+
+  d3.select("#" + newStep + "-annotation")
+    .style("display", "block")
+    .transition().delay(300).duration(500)
+      .style("opacity", 1);
+}
+
+d3.selectAll("a.step-link").on("click", function(d) {
+  var clickedStep = d3.select(this).attr("id");
+  switchStep(clickedStep);
+  switchAnnotation(clickedStep);
+  return false;
+});
+
 
 
 
