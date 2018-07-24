@@ -94,6 +94,27 @@ There are many statistics in baseball that could be used to measure pitching and
 
 <script>
 
+function switchStep(newStep)
+{
+  $(".step-link").toggleClass("active", false);
+  $("#" + newStep).toggleClass("active", true);
+}
+
+function switchAnnotation(newStep)
+{
+  $(".annotation-step").hide();
+  $("#" + newStep + "-annotation").delay(300).fadeIn(500);
+}
+
+$(document).ready(function() {
+  $("a.step-link").click(function(e) {
+    var clickedStep = $(this).attr('id');
+    switchStep(clickedStep);
+    switchAnnotation(clickedStep);
+    return false;
+  });
+});
+
 // Setup dimensions
 var margin = {top: 25, right: 25, bottom: 50, left: 80},
     width = 960 - margin.right - margin.left,
