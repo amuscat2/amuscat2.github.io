@@ -223,6 +223,9 @@ vizarea.selectAll("circle")
 	vizarea.append("text").text(function(d){
                     return d.team;
 		})
+    .attr("x", function(d) { return x(d.era); })
+     attr("y", function(d) { return y(d.obp); })
+    .style("text-anchor", "middle");
 	
 });
 
