@@ -230,7 +230,7 @@ var tooltip = d3.select("#tooltip");
 		.attr("r", 9)
 		.style("fill", function(d) { return color(d); })
 		.attr("transform", function(d, i) { 
-				return "translate(" + (width -100) + "," + 0 + ")";
+				return "translate(" + (width -100) + "," + 20 + ")";
 				})
 		.on("click",function(d){
 		   d3.selectAll("circle").style("opacity",1)
@@ -249,8 +249,9 @@ var tooltip = d3.select("#tooltip");
 	  });
 	 
 	  legend.append("text")
-		  .attr('x', width - 80)
-		  .attr('y',  function(d,i) { 20*i + 40;} )
+		.attr("transform", function(d, i) { 
+				return "translate(" + (width -80) + "," + 20 + ")";
+				})
 		  .text(function(d){ return d; });
 
 		
