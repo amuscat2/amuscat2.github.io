@@ -234,7 +234,7 @@ var tooltip = d3.select("#tooltip");
 		  
 	 legend.append('text')
 		  .attr('x', width - 15)
-		  .attr('y',  function(d.i) { 20*i + 5;} )
+		  .attr('y',  function(d,i) { 20*i + 5;} )
 		  .text(function(d){ return d.finish; });
 
 		
