@@ -222,10 +222,12 @@ d3.csv("mlb2.csv", function(error, data) {
 
 //Add text labels for 2018
 	vizarea.selectAll("circle")
-		.data(data).enter().append("text").text(function(d){return d.era;})
+		.data(data).enter().append("text")
+		.text(function(d){return "text";})
 		.attr("x", function(d) { return x(d.era); })
 		.attr("y", function(d) { return y(d.obp); })
-		.style("text-anchor", "middle");
+		.style("text-anchor", "middle")
+		.style("color","blue");
 	
 });
 
