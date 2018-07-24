@@ -222,7 +222,7 @@ d3.csv("mlb2.csv", function(error, data) {
 
 	vizarea.selectAll("circle").append("text").text(function(d){return d;})
 		.attr("x", function(d) { return x(d.era); })
-		 attr("y", function(d) { return y(d.obp); })
+		.attr("y", function(d) { return y(d.obp); })
 		.style("text-anchor", "middle");
 	
 });
