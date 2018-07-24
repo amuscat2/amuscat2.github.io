@@ -136,8 +136,11 @@ var y = d3.scaleLinear()
     .range([height,0]);
 	
 //Set color scale for categorical parameters
-var color = d3.scaleOrdinal(d3.schemeCategory10);
+var color = d3.scaleOrdinal(d3.schemeCategory20);
 
+// Not Necessary
+//var symbols = d3.scaleOrdinal(d3.symbols);
+//var symbol = d3.symbol().size(100);  
 
 //modify svg for vizualization area with standard name and appending g node
 var vizarea = d3.select(".chart")
@@ -212,36 +215,45 @@ var tooltip = d3.select("#tooltip");
 		
 		//Add Title
 		
-	  var legend = vizarea.append("g")
-    .attr("class", "legend")
-    .attr("x", width - 65)
-    .attr("y", 25)
-    .attr("height", 100)
-    .attr("width", 100);
-
-  legend.selectAll('g').data(data)
-      .enter()
-      .append('g')
-      .each(function(d, i) {
-        var g = d3.select(this);
-        g.append("circle")
-          .attr("x", width - 65)
-          .attr("y", i*25)
-          .attr("width", 10)
-          .attr("height", 10)
-          .style("fill", function(d) { return color(d.finish); })
-
-        g.append("text")
-          .attr("x", width - 50)
-          .attr("y", i * 25 + 8)
-          .attr("height",30)
-          .attr("width",100)
-          .text(function(d){ return d.finish; });
-
-      });	
 		
 		//Legend
 	
+	  var clicked = ""
+  
+	  var legend = svg.selectAll(".legend")
+		.data(color.domain())
+	  .enter().append("g")
+		.attr("class", "legend")
+		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+	  legend.append("circle")
+		.attr("r", 9)
+		.style("fill", function(d) { return color(d.finish); })
+		.attr("transform", function(d, i) { 
+				return "translate(" + (width -10) + "," + 10 + ")";
+				})
+		.on("click",function(d){
+		   d3.selectAll("circle").style("opacity",1)
+		   
+		   if (clicked !== d){
+			 d3.selectAll("circle")
+			   .filter(function(e){
+			   return e.finish !== d;
+			 })
+			   .style("opacity",0.2)
+			 clicked = d
+		   }
+			else{
+			  clicked = ""
+			}
+	  });
+	 
+	  legend.append("text")
+		  .attr("x", width - 24)
+		  .attr("y", 9)
+		  .attr("dy", ".35em")
+		  .style("text-anchor", "end")
+		  .text(function(d) { return d.finish; });
 		
 	});
 
