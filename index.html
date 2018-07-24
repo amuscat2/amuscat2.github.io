@@ -206,7 +206,7 @@ d3.csv("mlb2.csv", function(error, data) {
 	
 // Create the circles based on the criteria
 	vizarea.selectAll("circle")
-		  .data(data)
+		.data(data)
 		.enter().append("circle")
 		  .attr("r", 9)
 		  .attr("cx", function(d) { return x(d.era); })
@@ -220,7 +220,7 @@ d3.csv("mlb2.csv", function(error, data) {
 			})
 		.on("mouseout", function() {tooltip.style("opacity",0)});
 
-	vizarea.selectall("circle").append("text").text(function(d){return d;})
+	vizarea.selectAll("circle").append("text").text(function(d){return d;})
 		.attr("x", function(d) { return x(d.era); })
 		 attr("y", function(d) { return y(d.obp); })
 		.style("text-anchor", "middle");
