@@ -218,6 +218,71 @@ function updateData() {
 	});
 
     });
+	
+//setup axes with constant domain as data variables don't vary past specific ranges
+var x = d3.scaleLinear()
+	.domain([2.5,5.5])
+    .range([0,width]);
+    
+var y = d3.scaleLinear()
+	.domain([0.280,0.360])
+    .range([height,0]);
+
+	
+//Set color scale for categorical parameters
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
+//modify svg for vizualization area
+var vizarea = d3.select(".chart")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+//Tooltip variable
+var tooltip = d3.select("#tooltip");
+
+// Create the circles based on the criteria
+vizarea.selectAll("circle")
+      .data(data)
+    .enter().append("circle")
+      .attr("r", 9)
+      .attr("cx", function(d) { return x(d.era); })
+      .attr("cy", function(d) { return y(d.obp); })
+      .style("fill", function(d) { return color(d.finish); })
+	  .on("mouseover",function(d){
+		tooltip.style("opacity",1)
+			.style("left", (d3.event.pageX) + "px")		
+			.style("top", (d3.event.pageY) + "px")
+			.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+		})
+	.on("mouseout", function() {tooltip.style("opacity",0)});
+
+
+// Create the y and x axis and their centered labels
+vizarea.append("g")
+    .call(d3.axisLeft(y));
+
+vizarea.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 10)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+	  .style("color", "blue")
+      .text("ON BASE PERCENTAGE (OBP)");  
+	
+vizarea.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+	
+vizarea.append("text")             
+      .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+	  .style("color", "blue")
+      .text("EARNED RUN AVERAGE (ERA)");
+	  
 }
 
 function updateData2() {
@@ -240,6 +305,71 @@ function updateData2() {
 	});
 
     });
+	
+	//setup axes with constant domain as data variables don't vary past specific ranges
+var x = d3.scaleLinear()
+	.domain([2.5,5.5])
+    .range([0,width]);
+    
+var y = d3.scaleLinear()
+	.domain([0.280,0.360])
+    .range([height,0]);
+
+	
+//Set color scale for categorical parameters
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
+//modify svg for vizualization area
+var vizarea = d3.select(".chart")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	
+//Tooltip variable
+var tooltip = d3.select("#tooltip");
+
+// Create the circles based on the criteria
+vizarea.selectAll("circle")
+      .data(data)
+    .enter().append("circle")
+      .attr("r", 9)
+      .attr("cx", function(d) { return x(d.era); })
+      .attr("cy", function(d) { return y(d.obp); })
+      .style("fill", function(d) { return color(d.finish); })
+	  .on("mouseover",function(d){
+		tooltip.style("opacity",1)
+			.style("left", (d3.event.pageX) + "px")		
+			.style("top", (d3.event.pageY) + "px")
+			.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+		})
+	.on("mouseout", function() {tooltip.style("opacity",0)});
+
+
+// Create the y and x axis and their centered labels
+vizarea.append("g")
+    .call(d3.axisLeft(y));
+
+vizarea.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 10)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+	  .style("color", "blue")
+      .text("ON BASE PERCENTAGE (OBP)");  
+	
+vizarea.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+	
+vizarea.append("text")             
+      .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+      .style("text-anchor", "middle")
+	  .style("color", "blue")
+      .text("EARNED RUN AVERAGE (ERA)");
+	  
 }
  
 });
