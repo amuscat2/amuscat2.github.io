@@ -96,24 +96,29 @@ There are many statistics in baseball that could be used to measure pitching and
 
 function switchStep(newStep)
 {
-  $(".step-link").toggleClass("active", false);
-  $("#" + newStep).toggleClass("active", true);
+  d3.selectAll(".step-link").classed("active", false);
+  d3.select("#" + newStep).classed("active", true);
 }
 
 function switchAnnotation(newStep)
 {
-  $(".annotation-step").hide();
-  $("#" + newStep + "-annotation").delay(300).fadeIn(500);
+  d3.selectAll(".annotation-step")
+    .style("display", "none")
+    .style("opacity", 0.0);
+
+  d3.select("#" + newStep + "-annotation")
+    .style("display", "block")
+    .transition().delay(300).duration(500)
+      .style("opacity", 1);
 }
 
-$(document).ready(function() {
-  $("a.step-link").click(function(e) {
-    var clickedStep = $(this).attr('id');
-    switchStep(clickedStep);
-    switchAnnotation(clickedStep);
-    return false;
-  });
+d3.selectAll("a.step-link").on("click", function(d) {
+  var clickedStep = d3.select(this).attr("id");
+  switchStep(clickedStep);
+  switchAnnotation(clickedStep);
+  return false;
 });
+
 
 // Setup dimensions
 var margin = {top: 25, right: 25, bottom: 50, left: 80},
