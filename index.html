@@ -40,6 +40,9 @@ There are many statistics in baseball that could be used to measure pitching and
 
 <br>
 
+
+<!--Create Steps for visualization-->
+
 <div id="vis-nav">
   <a href="#" id="step1" class="step-link active">Step1</a>
   <a href="#" id="step2" class="step-link">Step2</a>
@@ -89,12 +92,15 @@ There are many statistics in baseball that could be used to measure pitching and
   
 
   
-  
+<!--Vizualition DIV-->  
 <div id="vis-canvas">
 	<svg class="chart" style="background-color:white"></svg>
 	<div id="tooltip"></div>
   </div>
 </div>
+
+
+<!--Start JS-->
 
 <script>
 
@@ -118,7 +124,7 @@ var y = d3.scaleLinear()
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 
-//modify svg for vizualization area
+//modify svg for vizualization area with standard name and appending g node
 var vizarea = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -128,8 +134,7 @@ var vizarea = d3.select(".chart")
 //Tooltip variable
 var tooltip = d3.select("#tooltip");
 	
-
-// Create the y and x axis and their centered labels
+// Create the y and x axis
 vizarea.append("g")
     .call(d3.axisLeft(y));
 
@@ -137,8 +142,7 @@ vizarea.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
-	
-	
+// Create the axes labels
 vizarea.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0 - margin.left + 10)
@@ -154,7 +158,7 @@ vizarea.append("text")
 	  .style("color", "blue")
       .text("EARNED RUN AVERAGE (ERA)");	
 
-//Get data
+//Get data for 2014 - 2017
 d3.csv("mlb.csv", function(error, data) {
 
 	if (error) throw error;
@@ -187,8 +191,15 @@ vizarea.selectAll("circle")
 		})
 	.on("mouseout", function() {tooltip.style("opacity",0)});
 
-	
 });
+
+
+// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
+// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
+// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
+// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
+
+
 
 	function updateData2() {
 
@@ -229,12 +240,12 @@ vizarea.selectAll("circle")
 			.on("mouseout", function() {tooltip.style("opacity",0)});
 			
 	//Add text labels
-		vizarea.selectAll("text")
-			.data(data).enter().append("text")
-			.text(function(d){return d.team;})
-			.attr("x", function(d) { return x(d.era)+5; })
-			.attr("y", function(d) { return y(d.obp); })
-			.style("color","blue");	
+	//	vizarea.selectAll("text")
+	//		.data(data).enter().append("text")
+	//		.text(function(d){return d.team;})
+	//		.attr("x", function(d) { return x(d.era)+5; })
+	//		.attr("y", function(d) { return y(d.obp); })
+	//		.style("color","blue");	
 			
 	});
 
@@ -277,32 +288,6 @@ vizarea.selectAll("circle")
 					.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
 				})
 			.on("mouseout", function() {tooltip.style("opacity",0)});
-			
-			
-		// recreation	
-		vizarea.append("g")
-			.call(d3.axisLeft(y));
-
-		vizarea.append("g")
-			.attr("transform", "translate(0," + height + ")")
-			.call(d3.axisBottom(x));
-		
-		vizarea.append("text")
-			  .attr("transform", "rotate(-90)")
-			  .attr("y", 0 - margin.left + 10)
-			  .attr("x",0 - (height / 2))
-			  .attr("dy", "1em")
-			  .style("text-anchor", "middle")
-			  .style("color", "blue")
-			  .text("ON BASE PERCENTAGE (OBP)");  	
-			
-		vizarea.append("text")             
-				.attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
-				  .style("text-anchor", "middle")
-				  .style("color", "blue")
-				  .text("EARNED RUN AVERAGE (ERA)");			
-
-	
 	
 	});
  
