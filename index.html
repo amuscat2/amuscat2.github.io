@@ -18,12 +18,63 @@
 <h1> Data Visualization: MLB Performance based on Pitching and Hitting for 2014 - 2018 </h1>
 <p>Start Here - Here we will vizualize the ERA vs OBP for the past 5 seasons including the current season.
 <br>
-Counter - 9
+There are many statistics in baseball that could be used to measure pitching and hitting. The most important ones are debatable. Below we will look at two of the most important measures.
+<br> For pitching, Earned Run Average (ERA) will be used which is the average number of runs allowed per 9 innings. For ERA, lower is better. 
+<br> For hitting, On Base Percentage (OBP) will be used which measures how frequently a batter will reach a base. For OBP, higher is better.
 <br>
+
 <button type="button" onclick="alert('This is where the final essay will go')">About the Visualization</button>
 </p>
 
-<svg class="chart" style="background-color:white"></svg>
+<div id="vis-nav">
+  <a href="#" id="step1" class="step-link active">Step1</a>
+  <a href="#" id="step2" class="step-link">Step2</a>
+  <a href="#" id="step3" class="step-link">Step3</a>
+</div>
+
+<!--Container for visualization-->
+<div id="totalviz">
+  <div id="annotations">
+
+    <!--Each steps annotation contained in a div-->
+    <div class="annotation-step" id="step1-annotation">
+
+      <!--Each annotation in a separate div for positioning-->
+      <div class="annotation" id="step1-left-annotation" >
+        <h4>Left Annotation Title</h4>
+        <p>Here is the annotation text for the <strong>left</strong> annotation of step 1</p>
+      </div>
+      <div class="annotation" id="step1-right-annotation" >
+        <h4>Right Annotation Title</h4>
+        <p>Here is the annotation text for the <strong>right</strong> annotation of step 1</p>
+      </div>
+    </div>
+    <div class="annotation-step" id="step2-annotation">
+      <div class="annotation" id="step2-center-annotation" >
+        <h4>Center Annotation Title</h4>
+        <p>Here is the annotation text for the center annotation of step 2.<br/> 
+          We are using absolute positioning of these divs</p>
+      </div>
+    </div>
+    <div class="annotation-step" id="step3-annotation">
+      <div class="annotation" id="step3-high-annotation" >
+        <h4>High Annotation Title</h4>
+        <p>This is text up high.</p>
+      </div>
+      <div class="annotation" id="step3-low-annotation" >
+        <h4>Low Annotation Title</h4>
+        <p>This is text down low.</p>
+      </div>
+    </div>
+  </div>
+  <div id="vis-canvas">
+	<svg class="chart" style="background-color:white"></svg>
+  </div>
+</div>
+
+
+
+
 
 <div id="tooltip"></div>
 
