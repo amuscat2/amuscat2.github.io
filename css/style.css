@@ -36,6 +36,10 @@ body {
   stroke: darkblue;
 }
 
+.legend rect {
+  fill:seashell;
+  stroke:black;
+  }
 
 
 
