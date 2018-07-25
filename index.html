@@ -186,8 +186,8 @@ function updateData1(){
 		  .on("mouseover",function(d){
 			tooltip.style("opacity",1)
 				.style("left", (d3.event.pageX) + "px")		
-				.style("top", ((d3.event.pageY)) + "px")
-				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+				.style("top", ((d3.event.pageY)+1) + "px")
+				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish)  + "<br/>" + "Win %: " + (d.winpct));
 			})
 		.on("mouseout", function() {tooltip.style("opacity",0)});
 		
@@ -364,8 +364,8 @@ function updateData2(){
 		  .on("mouseover",function(d){
 			tooltip.style("opacity",1)
 				.style("left", (d3.event.pageX) + "px")		
-				.style("top", ((d3.event.pageY)) + "px")
-				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+				.style("top", ((d3.event.pageY)+1) + "px")
+				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish)  + "<br/>" + "Win %: " + (d.winpct) );
 			})
 		.on("mouseout", function() {tooltip.style("opacity",0)});
 		
