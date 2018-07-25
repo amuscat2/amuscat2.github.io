@@ -98,7 +98,7 @@ There are many statistics in baseball that could be used to measure pitching and
   
 <!--Vizualition DIV-->  
 	<div id="vizsvg">
-		<svg class="chart" id="vizchart" style="background-color:white"></svg>
+		<svg class="chart" id="vizchart" style="background-color:white" style="stroke:black"></svg>
 		<div id="tooltip"></div>
 	</div>
 	
@@ -125,7 +125,7 @@ There are many statistics in baseball that could be used to measure pitching and
 function updateData1(){
 
 	d3.selectAll("svg > *").remove();
-
+	
 	// Setup dimensions
 	var margin = {top: 25, right: 25, bottom: 50, left: 80},
 		width = 860 - margin.right - margin.left,
