@@ -41,7 +41,33 @@ body {
   }
 
   
- .button {
+.button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button3 {
     background-color: black;
     border: none;
     color: white;
