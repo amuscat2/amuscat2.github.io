@@ -52,6 +52,8 @@ There are many statistics in baseball that could be used to measure pitching and
 <!--Container for visualization-->
 <div id="totalviz">
 
+
+
 <!--DIV for annotations-->  
   <div id="annotations">
 
@@ -111,7 +113,6 @@ There are many statistics in baseball that could be used to measure pitching and
         </table>
     </div>
 	
-	
 </div>
 
 
@@ -138,10 +139,6 @@ var y = d3.scaleLinear()
 //Set color scale for categorical parameters
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-// Not Necessary
-//var symbols = d3.scaleOrdinal(d3.symbols);
-//var symbol = d3.symbol().size(100);  
-
 //modify svg for vizualization area with standard name and appending g node
 var vizarea = d3.select(".chart")
     .attr("width", width + margin.left + margin.right)
@@ -157,9 +154,7 @@ var tooltip = d3.select("#tooltip");
 
 
 function updateData1(){
-	vizarea.selectAll("*").remove();
-
-	vizarea.selectAll("circle").remove();	  
+	vizarea.selectAll("*").remove();  
 		  
 	//Get data for 2014 - 2017
 	d3.csv("mlb.csv", function(error, data) {
@@ -182,7 +177,7 @@ function updateData1(){
 	vizarea.selectAll("circle")
 		  .data(data)
 		.enter().append("circle")
-		  .attr("r", 9)
+		  .attr("r", 8)
 		  .attr("cx", function(d) { return x(d.era); })
 		  .attr("cy", function(d) { return y(d.obp); })
 		  .style("fill", function(d) { return color(d.finish); })
@@ -306,7 +301,6 @@ d3.selectAll("a.step-link").on("click", function(d) {
 	function updateData2() {
 
 	// clearing out the previous data circles
-	vizarea.selectAll("circle").remove();
 	vizarea.selectAll("*").remove();
 
 	
