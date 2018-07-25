@@ -98,7 +98,7 @@ There are many statistics in baseball that could be used to measure pitching and
   
 <!--Vizualition DIV-->  
 	<div id="vizsvg">
-		<svg class="chart" style="background-color:white"></svg>
+		<svg class="chart" id="vizchart" style="background-color:white"></svg>
 		<div id="tooltip"></div>
 	</div>
 	
@@ -140,7 +140,7 @@ var y = d3.scaleLinear()
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 //modify svg for vizualization area with standard name and appending g node
-var vizarea = d3.select("#vizsvg")
+var vizarea = d3.select("#vizchart")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
