@@ -373,12 +373,12 @@ function updateData2(){
 	
 		//Add Annotation
 		//Add text labels - conflict with data1 - needs work
-	//	vizarea.selectAll("text")
-	//		.data(data).enter().append("text")
-	//		.text(function(d){return d.team;})
-	//		.attr("x", function(d) { return x(d.era)+5; })
-	//		.attr("y", function(d) { return y(d.obp); })
-	//		.style("color","blue");	
+		vizarea.selectAll("text")
+			.data(data).enter().append("text")
+			.text(function(d){return d.team;})
+			.attr("x", function(d) { return x(d.era)+5; })
+			.attr("y", function(d) { return y(d.obp); })
+			.style("color","blue");	
 		
 		
 		//Legend
@@ -389,7 +389,7 @@ function updateData2(){
 		.data(color.domain())
 	    .enter().append("g")
 		.attr("class", "legend")
-		.attr("transform", function(d, i) { return "translate(0," + i * 40 + ")"; })
+		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
 		.style("fill", "blue")
 		.style("stroke","black");
 	
@@ -397,7 +397,7 @@ function updateData2(){
 		.attr("r", 9)
 		.style("fill", function(d) { return color(d); })
 		.attr("transform", function(d, i) { 
-				return "translate(" + (width -105) + "," + 45 + ")";
+				return "translate(" + (width -105) + "," + 40 + ")";
 				})
 		.on("click",function(d){
 		   d3.selectAll("circle").style("opacity",1)
@@ -417,7 +417,7 @@ function updateData2(){
 	 
 	  legend.append("text")
 		.attr("transform", function(d, i) { 
-				return "translate(" + (width -85) + "," + 25 + ")";
+				return "translate(" + (width -85) + "," + 45 + ")";
 				})
 		  .text(function(d){ return d; });
 
