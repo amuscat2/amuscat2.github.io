@@ -225,6 +225,7 @@ var tooltip = d3.select("#tooltip");
 	  .enter().append("g")
 		.attr("class", "legend")
 		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+		.style("fill", seashell);
 
 	  legend.append("circle")
 		.attr("r", 9)
