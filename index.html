@@ -300,10 +300,9 @@ d3.selectAll("a.step-link").on("click", function(d) {
 // Update function for second scene
 
 	function updateData2() {
-	d3.selectAll("svg > *").remove();
 	// clearing out the previous data circles
-	vizarea.selectAll("*").remove();
-
+	//vizarea.selectAll("*").remove();
+	d3.select("#vizchart").selectAll("*").remove();
 	
 	// load data again
 	d3.csv("mlb2.csv", function(error, data) {
@@ -411,6 +410,123 @@ d3.selectAll("a.step-link").on("click", function(d) {
 	
 	}
 
+	
+
+	function updateData3() {
+	d3.selectAll("svg > *").remove();
+	// clearing out the previous data circles
+	vizarea.selectAll("*").remove();
+
+	
+	// load data again
+	d3.csv("mlb3.csv", function(error, data) {
+
+		if (error) throw error;
+		
+		data.forEach(function(d) {
+			d.year = +d.year;
+			d.team = d.team;
+			d.teamname = d.teamname;
+			d.obp = +d.obp;
+			d.era = +d.era;
+			d.winpct = +d.winpct;
+			d.homerun = +d.homerun;
+			d.battingavg = +d.battingavg;
+			d.finish = d.finish;
+		});
+		
+	// Create the circles based on the criteria
+		vizarea.selectAll("circle")
+			.data(data)
+			.enter().append("circle")
+			  .attr("r", 9)
+			  .attr("cx", function(d) { return x(d.era); })
+			  .attr("cy", function(d) { return y(d.obp); })
+			  .style("fill", function(d) { return color(d.finish); })
+			  .on("mouseover",function(d){
+				tooltip.style("opacity",1)
+					.style("left", (d3.event.pageX) + "px")		
+					.style("top", ((d3.event.pageY)-220) + "px")
+					.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
+				})
+			.on("mouseout", function() {tooltip.style("opacity",0)});
+			
+	//Add text labels - conflict with data1 - needs work
+	//	vizarea.selectAll("text")
+	//		.data(data).enter().append("text")
+	//		.text(function(d){return d.team;})
+	//		.attr("x", function(d) { return x(d.era)+5; })
+	//		.attr("y", function(d) { return y(d.obp); })
+	//		.style("color","blue");	
+	
+
+
+	
+	});
+
+	// Create the y and x axis
+	vizarea.append("g")
+		.call(d3.axisLeft(y));
+
+	vizarea.append("g")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x));
+
+	// Create the axes labels
+	vizarea.append("text")
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 0 - margin.left + 10)
+		  .attr("x",0 - (height / 2))
+		  .attr("dy", "1em")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .text("ON BASE PERCENTAGE (OBP)");  	
+		
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .text("EARNED RUN AVERAGE (ERA)");	
+	
+		//Legend
+	
+	  var clicked = ""
+  
+	  var legend = vizarea.selectAll(".legend")
+		.data(color.domain())
+	    .enter().append("g")
+		.attr("class", "legend")
+		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
+		.style("fill", "blue")
+		.style("stroke","black");
+	
+	  legend.append("circle")
+		.attr("r", 9)
+		.style("fill", function(d) { return color(d); })
+		.attr("transform", function(d, i) { 
+				return "translate(" + (width -105) + "," + 20 + ")";
+				})
+		.on("click",function(d){
+		   d3.selectAll("circle").style("opacity",1)
+		   
+		   if (clicked !== d){
+			 d3.selectAll("circle")
+			   .filter(function(e){
+			   return e.finish !== d;
+			 })
+			   .style("opacity",0.2)
+			 clicked = d
+		   }
+			else{
+			  clicked = ""
+			}
+	})
+	
+	}
+
+	
+	
+	
 </script>
 
 </body></html>
