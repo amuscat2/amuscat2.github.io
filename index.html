@@ -222,9 +222,11 @@ var tooltip = d3.select("#tooltip");
   
 	  var legend = vizarea.selectAll(".legend")
 		.data(color.domain())
-	  .enter().append("g")
+	    .enter().append("g")
 		.attr("class", "legend")
-		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
+		.style("fill", "blue")
+		.style("stroke","black");
 	
 	  legend.append("circle")
 		.attr("r", 9)
