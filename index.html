@@ -178,6 +178,8 @@ var tooltip = d3.select("#tooltip");
 		  .style("color", "blue")
 		  .text("EARNED RUN AVERAGE (ERA)");	
 
+
+function updateData1(){
 		  
 	//Get data for 2014 - 2017
 	d3.csv("mlb.csv", function(error, data) {
@@ -260,8 +262,9 @@ var tooltip = d3.select("#tooltip");
 	});
 
 	
+}
 
-
+updateData1();
 
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
@@ -344,48 +347,6 @@ d3.selectAll("a.step-link").on("click", function(d) {
 			
 	});
 
-	}
-
-	function updateData1() {
-	
-	// clearing out the previous data circles
-	vizarea.selectAll("circle").remove();
-	
-	// load data again
-	d3.csv("mlb.csv", function(error, data) {
-
-		if (error) throw error;
-		
-		data.forEach(function(d) {
-			d.year = +d.year;
-			d.team = d.team;
-			d.teamname = d.teamname;
-			d.obp = +d.obp;
-			d.era = +d.era;
-			d.winpct = +d.winpct;
-			d.homerun = +d.homerun;
-			d.battingavg = +d.battingavg;
-			d.finish = d.finish;
-		});
-		
-	// Create the circles based on the criteria
-		vizarea.selectAll("circle")
-			.data(data)
-			.enter().append("circle")
-			  .attr("r", 9)
-			  .attr("cx", function(d) { return x(d.era); })
-			  .attr("cy", function(d) { return y(d.obp); })
-			  .style("fill", function(d) { return color(d.finish); })
-			  .on("mouseover",function(d){
-				tooltip.style("opacity",1)
-					.style("left", (d3.event.pageX) + "px")		
-					.style("top", ((d3.event.pageY)-220) + "px")
-					.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish));
-				})
-			.on("mouseout", function() {tooltip.style("opacity",0)});
-	
-	});
- 
 	}
 
 </script>
