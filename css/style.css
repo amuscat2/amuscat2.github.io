@@ -71,7 +71,7 @@ body {
 /* This is where you would create the actual visualization.
  * Right now, lets just change the background color. */
 
-#vis-canvas {
+#vizsvg {
   position: absolute;
   width: 100%;
   height: 100%;
