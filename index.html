@@ -303,13 +303,14 @@ function updateData2(){
 		
 	
 		//Add Annotation
-		//Add text labels - conflict with data1 - needs work
-		vizarea.selectAll("text")
-			.data(data).enter().append("text")
-			.text(function(d){return d.team;})
-			.attr("x", function(d) { return x(d.era)-8; })
-			.attr("y", function(d) { return y(d.obp)+4; })
-			.style("color","blue");	
+		//Add text labels - Created conflict - did not use
+		//vizarea.selectAll("text")
+		//	.data(data).enter().append("text")
+		//	.text(function(d){return d.team;})
+		//	.attr("x", function(d) { return x(d.era)-8; })
+		//	.attr("y", function(d) { return y(d.obp)+4; })
+		//	.style("color","blue");	
+		
 		
 		
 		//Legend
