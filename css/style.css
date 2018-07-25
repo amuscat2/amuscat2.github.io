@@ -40,6 +40,19 @@ body {
   stroke:black;
   }
 
+  
+ .button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 /* THIS NEED TO BE EDITED */
 /* THIS NEED TO BE EDITED */
@@ -83,60 +96,4 @@ body {
   background-color: darkgrey;
 }
 
-/* By default, all annotation-steps are hidden. */
-
-.annotation-step {
-  position: absolute;
-  display: none;
-}
-
-/* Finally we can position each annotation exactly how
- * we want. */
-
-.annotation {
-  position: absolute;
-}
-
-/* annotation postioning */
-#step1-left-annotation {
-  left: 30px;
-  top: 120px;
-  width: 200px;
-}
-
-#step1-right-annotation {
-  left: 200px;
-  top: 200px;
-  width: 200px;
-}
-
-#step2-center-annotation {
-  left: 200px;
-  top: 200px;
-  width: 200px;
-}
-
-#step3-high-annotation {
-  left: 30px;
-  top: 100px;
-  width: 200px;
-}
-
-#step3-low-annotation {
-  left: 30px;
-  top: 250px;
-  width: 200px;
-}
-
-/* Basic styling for the step links */
-a.step-link {
-  padding: 10px;
-  background-color: black;
-  color: white;
-  text-decoration: none;
-}
-
-a.step-link:hover, a.active {
-  color: red;
-}
 
