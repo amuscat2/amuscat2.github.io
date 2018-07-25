@@ -120,40 +120,37 @@ There are many statistics in baseball that could be used to measure pitching and
 
 <script>
 
-
-
-// Setup dimensions
-var margin = {top: 25, right: 25, bottom: 50, left: 80},
-    width = 860 - margin.right - margin.left,
-    height = 620 - margin.top - margin.bottom;
-
-//setup axes with constant domain as data variables don't vary past specific ranges
-var x = d3.scaleLinear()
-	.domain([2.5,5.5])
-    .range([0,width]);
-    
-var y = d3.scaleLinear()
-	.domain([0.280,0.360])
-    .range([height,0]);
-	
-//Set color scale for categorical parameters
-var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-//modify svg for vizualization area with standard name and appending g node
-var vizarea = d3.select("#vizchart")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	
-//Tooltip variable
-var tooltip = d3.select("#tooltip");
-
-	
-
-
-
 function updateData1(){
+
+	// Setup dimensions
+	var margin = {top: 25, right: 25, bottom: 50, left: 80},
+		width = 860 - margin.right - margin.left,
+		height = 620 - margin.top - margin.bottom;
+
+	//setup axes with constant domain as data variables don't vary past specific ranges
+	var x = d3.scaleLinear()
+		.domain([2.5,5.5])
+		.range([0,width]);
+		
+	var y = d3.scaleLinear()
+		.domain([0.280,0.360])
+		.range([height,0]);
+		
+	//Set color scale for categorical parameters
+	var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+	//modify svg for vizualization area with standard name and appending g node
+	var vizarea = d3.select("#vizchart")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+	//Tooltip variable
+	var tooltip = d3.select("#tooltip");
+
+	
+
 	vizarea.selectAll("*").remove;
 
 		  
@@ -300,10 +297,36 @@ d3.selectAll("a.step-link").on("click", function(d) {
 // Update function for second scene
 
 	function updateData2() {
-	// clearing out the previous data circles
-	//vizarea.selectAll("*").remove();
+
 	d3.select("#vizchart").selectAll("*").remove();
 	
+		// Setup dimensions
+	var margin = {top: 25, right: 25, bottom: 50, left: 80},
+		width = 860 - margin.right - margin.left,
+		height = 620 - margin.top - margin.bottom;
+
+	//setup axes with constant domain as data variables don't vary past specific ranges
+	var x = d3.scaleLinear()
+		.domain([2.5,5.5])
+		.range([0,width]);
+		
+	var y = d3.scaleLinear()
+		.domain([0.280,0.360])
+		.range([height,0]);
+		
+	//Set color scale for categorical parameters
+	var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+	//modify svg for vizualization area with standard name and appending g node
+	var vizarea = d3.select("#vizchart")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+	//Tooltip variable
+	var tooltip = d3.select("#tooltip");
+
 	// load data again
 	d3.csv("mlb2.csv", function(error, data) {
 
