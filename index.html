@@ -181,6 +181,8 @@ var tooltip = d3.select("#tooltip");
 
 function updateData1(){
 		  
+	vizarea.selectAll("circle").remove();	  
+		  
 	//Get data for 2014 - 2017
 	d3.csv("mlb.csv", function(error, data) {
 
@@ -264,6 +266,7 @@ function updateData1(){
 	
 }
 
+//call update for first scene
 updateData1();
 
 // THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
@@ -297,7 +300,7 @@ d3.selectAll("a.step-link").on("click", function(d) {
 });
 
 
-
+// Update function for second scene
 
 	function updateData2() {
 
