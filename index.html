@@ -103,7 +103,7 @@ There are many statistics in baseball that could be used to measure pitching and
 	</div>
 	
 <!--DIV for Brushed Table-->  
-<div id="table">
+<! -- <div id="table">
         <table>
             <tr>
                 <th>Team Name</th>
@@ -113,7 +113,7 @@ There are many statistics in baseball that could be used to measure pitching and
         </table>
     </div>
 	
-</div>
+</div> -->
 
 
 <!--Start JS-->
@@ -133,7 +133,7 @@ function updateData1(){
 
 	//setup axes with constant domain as data variables don't vary past specific ranges
 	var x = d3.scaleLinear()
-		.domain([2.5,5.5])
+		.domain([2.5,5.6])
 		.range([0,width]);
 		
 	var y = d3.scaleLinear()
@@ -185,7 +185,7 @@ function updateData1(){
 		  .style("fill", function(d) { return color(d.finish); })
 		  .on("mouseover",function(d){
 			tooltip.style("opacity",1)
-				.style("left", (d3.event.pageX) + "px")		
+				.style("left", ((d3.event.pageX)+5) + "px")		
 				.style("top", ((d3.event.pageY)+1) + "px")
 				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish)  + "<br/>" + "Win %: " + (d.winpct));
 			})
@@ -233,6 +233,7 @@ function updateData1(){
 		.attr("transform", function(d, i) { 
 				return "translate(" + (width -85) + "," + 45 + ")";
 				})
+		.attr("font-size", "11px")
 		  .text(function(d){ return d; });
 
 	// Create the y and x axis
@@ -311,7 +312,7 @@ function updateData2(){
 
 	//setup axes with constant domain as data variables don't vary past specific ranges
 	var x = d3.scaleLinear()
-		.domain([2.5,5.5])
+		.domain([2.5,5.6])
 		.range([0,width]);
 		
 	var y = d3.scaleLinear()
@@ -363,7 +364,7 @@ function updateData2(){
 		  .style("fill", function(d) { return color(d.finish); })
 		  .on("mouseover",function(d){
 			tooltip.style("opacity",1)
-				.style("left", (d3.event.pageX) + "px")		
+				.style("left", ((d3.event.pageX)+5) + "px")		
 				.style("top", ((d3.event.pageY)+1) + "px")
 				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish)  + "<br/>" + "Win %: " + (d.winpct) );
 			})
@@ -419,6 +420,7 @@ function updateData2(){
 		.attr("transform", function(d, i) { 
 				return "translate(" + (width -85) + "," + 45 + ")";
 				})
+		.attr("font-size", "11px")
 		  .text(function(d){ return d; });
 
 	// Create the y and x axis
