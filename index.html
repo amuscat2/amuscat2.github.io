@@ -154,7 +154,8 @@ var tooltip = d3.select("#tooltip");
 
 
 function updateData1(){
-	vizarea.selectAll("*").remove();  
+	vizarea.selectAll("*").remove;
+
 		  
 	//Get data for 2014 - 2017
 	d3.csv("mlb.csv", function(error, data) {
@@ -299,7 +300,7 @@ d3.selectAll("a.step-link").on("click", function(d) {
 // Update function for second scene
 
 	function updateData2() {
-
+	d3.selectAll("svg > *").remove();
 	// clearing out the previous data circles
 	vizarea.selectAll("*").remove();
 
