@@ -239,7 +239,13 @@ function updateData1(){
 		  .style("text-anchor", "middle")
 		  .style("color", "blue")
 		  .style("font-size", "14px")
-		  .html("LEGEND: CLICK ON CIRCLES" + <br/> + "FILTER BY GROUP");	
+		  .html("LEGEND: CLICK ON CIRCLES");	
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width-50) + " ,12)")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .style("font-size", "14px")
+		  .html("TO FILTER BY GROUP");
 	
 	vizarea.append("line")
 		.attr("x1", 120)
