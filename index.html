@@ -224,7 +224,8 @@ function updateData1(){
 		  .style("text-anchor", "middle")
 		  .style("color", "blue")
 		  .text("EARNED RUN AVERAGE (ERA)");	
-		  
+	
+	// Titles and Annotations
 		
 	vizarea.append("text")             
 		  .attr("transform", "translate(" + (width/2) + " ,0)")
@@ -244,7 +245,7 @@ function updateData1(){
 			{ "x": 350,  "y": 450},
 		];
 		
-		var trendline = d3.svg.line()
+		var trendline = vizarea.line()
 			.x(function(d) { return d.x; })
 			.y(function(d) { return d.y; })
 			.interpolate("linear");
