@@ -239,20 +239,14 @@ function updateData1(){
 		  .style("color", "blue")
 		  .text("LEGEND: CLICK ON CIRCLES <br/> TO FILTER BY GROUP");	
 	
-	function drawline() {
-		var trenddata = [
-			{ "x": 300,   "y": 400},  
-			{ "x": 350,  "y": 450},
-		];
-		
-		var trendline = vizarea.line()
-			.x(function(d) { return d.x; })
-			.y(function(d) { return d.y; })
-			.interpolate("linear");
-		};
-	drawline();
-		
-		
+	vizarea.append("line")
+		.attr("x1", 150)
+		.attr("y1", 150)
+		.attr("x2", 200)
+		.attr("y2", 100)
+		.attr("stroke-width", 2)
+		.attr("stroke", "red");
+				
 	});
 
 	
