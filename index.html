@@ -231,13 +231,14 @@ function updateData1(){
 		  .attr("transform", "translate(" + (width/2) + " ,0)")
 		  .style("text-anchor", "middle")
 		  .style("fill", "blue")
-		  .style("font-size", "18px")
+		  .style("font-size", "22px")
 		  .text("2014 - 2017 SEASON PERFORMANCE");	
 		
 	vizarea.append("text")             
 		  .attr("transform", "translate(" + (width-50) + " ,5)")
 		  .style("text-anchor", "middle")
 		  .style("color", "blue")
+		  .style("font-size", "14px")
 		  .html("LEGEND: CLICK ON CIRCLES" + "<br>" + "FILTER BY GROUP");	
 	
 	vizarea.append("line")
@@ -250,7 +251,6 @@ function updateData1(){
 		.attr("stroke", "red");
 				
 	});
-
 	
 	//standardize text
 	//.append("text").attr("dy", "0em").text("line 1")  
@@ -259,12 +259,13 @@ function updateData1(){
 		  .attr("transform", "translate(445,90)")
 		  .style("text-anchor", "left")
 		  .style("fill", "blue")
-		  .style("font-size", "6px")
-		  .html("No team below this line").append("text")             
-		  .attr("transform", "translate(445,96)")
+		  .style("font-size", "12px")
+		  .html("No team below this line");
+	vizarea.append("text")             
+		  .attr("transform", "translate(445,102)")
 		  .style("text-anchor", "left")
 		  .style("fill", "blue")
-		  .style("font-size", "6px")
+		  .style("font-size", "12px")
 		  .html("qualified for playoffs");		
 	
 }
