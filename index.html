@@ -24,7 +24,7 @@ There are many statistics in baseball that could be used to measure pitching and
 <br>
 <br>
 
-<button type="button" class = "button2" onclick="alert('This is where the final essay will go')">About the Visualization</button>
+<button type="button" class = "button2" onclick="alert('This is where the final essay will go') - INCLUDE SOURCES and IF POSSIBLE, EMBED INTO THE SVG INSTEAD">About the Visualization</button>
 <br>
 (If "About the Visualization" button does not work, please enable web alerts for this site)
 <br>
@@ -90,7 +90,7 @@ There are many statistics in baseball that could be used to measure pitching and
 
 //First Scene
 
-function updateData1(){
+function updatepartial() {
 
 	d3.selectAll("svg > *").remove();
 	
@@ -121,11 +121,14 @@ function updateData1(){
 	//Tooltip variable
 	var tooltip = d3.select("#tooltip");
 
-	
-
 	vizarea.selectAll("*").remove;
 
-		  
+}		  
+
+function updateData1(){
+
+	updatepartial();
+
 	//Get data for 2014 - 2017
 	d3.csv("mlb.csv", function(error, data) {
 
@@ -163,7 +166,7 @@ function updateData1(){
 		//Add Annotation
 		
 		
-		//Legend
+		//Legend with filtering
 	
 	  var clicked = ""
   
@@ -244,40 +247,6 @@ updateData1();
 // Update function for second scene
 
 function updateData2(){
-
-	d3.selectAll("svg > *").remove();
-
-	// Setup dimensions
-	var margin = {top: 25, right: 25, bottom: 50, left: 80},
-		width = 860 - margin.right - margin.left,
-		height = 620 - margin.top - margin.bottom;
-
-	//setup axes with constant domain as data variables don't vary past specific ranges
-	var x = d3.scaleLinear()
-		.domain([2.5,5.6])
-		.range([0,width]);
-		
-	var y = d3.scaleLinear()
-		.domain([0.280,0.360])
-		.range([height,0]);
-		
-	//Set color scale for categorical parameters
-	var color = d3.scaleOrdinal(d3.schemeCategory10);
-
-	//modify svg for vizualization area with standard name and appending g node
-	var vizarea = d3.select("#vizchart")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-	  .append("g")
-		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		
-	//Tooltip variable
-	var tooltip = d3.select("#tooltip");
-
-	
-
-	vizarea.selectAll("*").remove;
-
 		  
 	//Get data for 2018
 	d3.csv("mlb2.csv", function(error, data) {
