@@ -64,8 +64,6 @@ There are many statistics in baseball that could be used to measure pitching and
 		<svg class="chart" id="vizchart" style="background-color:white">
 			</svg>
 
-	<rect width="870" height="630"
-			style="stroke:black;stroke-width:2;opacity:1;margin:auto" />
 	<div id="tooltip"></div>
 	</div>
 	
@@ -226,7 +224,17 @@ function updateData1(){
 		  .style("text-anchor", "middle")
 		  .style("color", "blue")
 		  .text("EARNED RUN AVERAGE (ERA)");	
-		
+	
+
+	var border = vizarea.append("rect")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("height", height)
+  .attr("width", width)
+  .style("stroke", black)
+  .style("fill", "none")
+  .style("stroke-width", 3);
+	
 	});
 
 	
