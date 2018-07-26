@@ -230,7 +230,8 @@ function updateData1(){
 	vizarea.append("text")             
 		  .attr("transform", "translate(" + (width/2) + " ,0)")
 		  .style("text-anchor", "middle")
-		  .style("color", "blue")
+		  .style("fill", "blue")
+		  .style("font", "14px")
 		  .text("2014 - 2017 SEASON PERFORMANCE");	
 		
 	vizarea.append("text")             
@@ -250,12 +251,15 @@ function updateData1(){
 				
 	});
 
+	
+	//standardize text
+	//.append("text").attr("dy", "0em").text("line 1")  
 	vizarea.append("text")             
 		  .attr("transform", "translate(445,90)")
 		  .style("text-anchor", "left")
 		  .style("fill", "blue")
 		  .style("font", "10px")
-		  .html("No team below this line" + "<br>" + "qualified for playoffs");	
+		  .html("No team below this line " + "<br>" + "qualified for playoffs");	
 	
 }
 
@@ -415,6 +419,15 @@ function updateData2(){
 		  .style("text-anchor", "middle")
 		  .style("color", "blue")
 		  .text("EARNED RUN AVERAGE (ERA)");	
+		
+		// Titles and Annotations
+		
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width/2) + " ,0)")
+		  .style("text-anchor", "middle")
+		  .style("fill", "blue")
+		  .style("font", "14px")
+		  .text("2014 - 2017 SEASON PERFORMANCE");		
 		
 	});
 
