@@ -254,12 +254,18 @@ function updateData1(){
 	
 	//standardize text
 	//.append("text").attr("dy", "0em").text("line 1")  
+	
 	vizarea.append("text")             
 		  .attr("transform", "translate(445,90)")
 		  .style("text-anchor", "left")
 		  .style("fill", "blue")
 		  .style("font-size", "6px")
-		  .html("No team below this line " + "<br>" + "qualified for playoffs");	
+		  .html("No team below this line").append("text")             
+		  .attr("transform", "translate(445,96)")
+		  .style("text-anchor", "left")
+		  .style("fill", "blue")
+		  .style("font-size", "6px")
+		  .html("qualified for playoffs");		
 	
 }
 
