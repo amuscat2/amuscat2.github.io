@@ -248,8 +248,8 @@ function updateData1(){
 		  .html("TO FILTER BY GROUP");
 	
 	vizarea.append("line")
-		.attr("x1", 120)
-		.attr("y1", 360)
+		.attr("x1", 80)
+		.attr("y1", 400)
 		.attr("x2", 440)
 		.attr("y2", 90)
 		.attr("stroke-width", 5)
@@ -439,8 +439,21 @@ function updateData2(){
 		  .attr("transform", "translate(" + (width/2) + " ,0)")
 		  .style("text-anchor", "middle")
 		  .style("fill", "blue")
-		  .style("font-size", "18px")
+		  .style("font-size", "22px")
 		  .text("2018 SEASON PERFORMANCE TO DATE");		
+		  
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width-52) + " ,11)")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .style("font-size", "12px")
+		  .html("LEGEND: CLICK ON CIRCLES");	
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width-52) + " ,23)")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .style("font-size", "12px")
+		  .html("TO FILTER BY GROUP");
 		
 	});
 
