@@ -237,6 +237,20 @@ function updateData1(){
 		  .style("text-anchor", "middle")
 		  .style("color", "blue")
 		  .text("LEGEND: CLICK ON CIRCLES <br/> TO FILTER BY GROUP");	
+	
+	function drawline() {
+		var trenddata = [
+			{ "x": 300,   "y": 400},  
+			{ "x": 350,  "y": 450},
+		];
+		
+		var trendline = d3.svg.line()
+			.x(function(d) { return d.x; })
+			.y(function(d) { return d.y; })
+			.interpolate("linear");
+		};
+	drawline();
+		
 		
 	});
 
