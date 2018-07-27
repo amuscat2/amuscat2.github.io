@@ -264,6 +264,18 @@ function updateData1(){
 		.style("stroke-dasharray", ("5, 5"))
 		.attr("stroke", "red");
 				
+	vizarea.append("line")
+		.attr("x1", 620)
+		.attr("y1", 10)
+		.attr("x2", 510)
+		.attr("y2", 10)
+		.attr("x3", 510)
+		.attr("y3", 200)
+		.attr("x4", 620)
+		.attr("y4", 200)
+		.attr("stroke-width", 2)
+		.attr("stroke", "black");			
+	
 	});
 	
 	//standardize text
@@ -283,14 +295,6 @@ function updateData1(){
 		  .html("qualified for playoffs");		
 	
 }
-
-//call update for first scene
-updateData1();
-
-// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
-// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
-// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
-// THIS IS WHERE THE FUNCTION WILL BEGIN TO START TRANSITIONS FROM FIRST SCENE
 
 // Update function for second scene
 
@@ -448,7 +452,7 @@ function updateData2(){
 		  .style("text-anchor", "middle")
 		  .style("fill", "blue")
 		  .style("font-size", "22px")
-		  .text("MLB 2018 SEASON PERFORMANCE TO DATE");		
+		  .text("MLB 2018 CURRENT PERFORMANCE");		
 		  
 	vizarea.append("text")             
 		  .attr("transform", "translate(" + (width-52) + " ,11)")
@@ -626,12 +630,16 @@ function updateData3(){
 	});
 
 }
-	
+
 function introduction(){
 
 
 
 }
+
+//call update for first scene
+introduction();
+
 	
 </script>
 
