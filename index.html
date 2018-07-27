@@ -285,6 +285,26 @@ function updateData1(){
 		  .style("fill", "red")
 		  .style("font-size", "12px")
 		  .html("qualified for playoffs");		
+		  
+	var legendpath = [ 
+				{ "x": 860,   "y": 10},  
+				{ "x": 730,  "y": 10},
+				{ "x": 730,  "y": 200},
+				{ "x": 860,  "y": 200},
+                { "x": 860,  "y": 10}];
+
+		  
+	var lineFunction = d3.svg.line()
+	.x(function(d) { return d.x; })
+	.y(function(d) { return d.y; })
+	.interpolate('linear');
+	
+	var lineGraph = svg.append("path")
+	.attr("d", lineFunction(legendpath))
+	.attr("stroke", "blue")
+	.attr("stroke-width", 2)
+	.attr("fill", "none");
+	
 	
 }
 
