@@ -286,6 +286,15 @@ function updateData1(){
 		  .style("font-size", "12px")
 		  .html("qualified for playoffs");		
 		  
+	//going to use path gen instead
+	//vizarea.append('rect')
+    //      .attr("x", 612)
+	//	  .attr("y", 0)
+	//	  .attr("width", 167) 
+	//	  .attr("height", 90)	  
+	//	  .attr("stroke", "black")
+	//	  .attr("stroke-width", 2)
+	//	  .attr("fill", "none");
 	
 	var legendpath = [ 
 				{ "x": 779,   "y": 0},  
@@ -295,13 +304,13 @@ function updateData1(){
                 { "x": 779,  "y": 0}];
 
 		  
-	var lineFunction = d3.line()
+	var legendborder = d3.line()
 	.x(function(d) { return d.x; })
 	.y(function(d) { return d.y; })
 	.curve(d3.curveLinear);
 	
 	var lineGraph = vizarea.append("path")
-	.attr("d", lineFunction(legendpath))
+	.attr("d", legendborder(legendpath))
 	.attr("stroke", "black")
 	.attr("stroke-width", 2)
 	.attr("fill", "none");
@@ -480,18 +489,27 @@ function updateData2(){
 		  .style("font-size", "12px")
 		  .html("TO FILTER BY GROUP");
 		
-		
-	vizarea.append('rect')
-          .attr("x", 612)
-		  .attr("y", 0)
-		  .attr("width", 167) 
-		  .attr("height", 90)	  
-		  .attr("stroke", "black")
-		  .attr("stroke-width", 2)
-		  .attr("fill", "none");
 	
 	});
 
+		var legendpath = [ 
+				{ "x": 779,   "y": 0},  
+				{ "x": 612,  "y": 0},
+				{ "x": 612,  "y": 90},
+				{ "x": 779,  "y": 90},
+                { "x": 779,  "y": 0}];
+
+		  
+	var legendborder = d3.line()
+	.x(function(d) { return d.x; })
+	.y(function(d) { return d.y; })
+	.curve(d3.curveLinear);
+	
+	var lineGraph = vizarea.append("path")
+	.attr("d", legendborder(legendpath))
+	.attr("stroke", "black")
+	.attr("stroke-width", 2)
+	.attr("fill", "none");
 
 	
 }
@@ -652,6 +670,26 @@ function updateData3(){
 		
 	});
 
+	var legendpath = [ 
+				{ "x": 779,   "y": 0},  
+				{ "x": 612,  "y": 0},
+				{ "x": 612,  "y": 100},
+				{ "x": 779,  "y": 100},
+                { "x": 779,  "y": 0}];
+
+		  
+	var legendborder = d3.line()
+	.x(function(d) { return d.x; })
+	.y(function(d) { return d.y; })
+	.curve(d3.curveLinear);
+	
+	var lineGraph = vizarea.append("path")
+	.attr("d", legendborder(legendpath))
+	.attr("stroke", "black")
+	.attr("stroke-width", 2)
+	.attr("fill", "none");
+
+	
 }
 
 function introduction(){
