@@ -402,9 +402,9 @@ function updateData2(){
 		
 		
 		
-		//Legend
+		//Legend with filter
 	
-	  var clicked = ""
+	  var filtered = ""
   
 	  var legend = vizarea.selectAll(".legend")
 		.data(color.domain())
@@ -429,10 +429,10 @@ function updateData2(){
 			   return e.finish !== d;
 			 })
 			   .style("opacity",0.2)
-			 clicked = d
+			 filtered = d
 		   }
 			else{
-			  clicked = ""
+			  filtered = ""
 			}
 	  });
 	 
