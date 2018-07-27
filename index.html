@@ -463,7 +463,159 @@ function updateData2(){
 
 function updateData3(){ 
 
-d3.selectAll("svg > *").remove();
+
+	d3.selectAll("svg > *").remove();
+
+	// Setup dimensions
+	var margin = {top: 25, right: 25, bottom: 50, left: 80},
+		width = 860 - margin.right - margin.left,
+		height = 620 - margin.top - margin.bottom;
+
+	//setup axes with constant domain as data variables don't vary past specific ranges
+	var x = d3.scaleLinear()
+		.domain([2.5,5.6])
+		.range([0,width]);
+		
+	var y = d3.scaleLinear()
+		.domain([0.280,0.360])
+		.range([height,0]);
+		
+	//Set color scale for categorical parameters
+	var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+	//modify svg for vizualization area with standard name and appending g node
+	var vizarea = d3.select("#vizchart")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+	//Tooltip variable
+	var tooltip = d3.select("#tooltip");
+
+	
+
+	vizarea.selectAll("*").remove;
+
+		  
+	//Get data for 2018
+	d3.csv("npb.csv", function(error, data) {
+
+		if (error) throw error;
+		
+		data.forEach(function(d) {
+			d.year = +d.year;
+			d.teamname = d.teamname;
+			d.obp = +d.obp;
+			d.era = +d.era;
+			d.winpct = +d.winpct;
+			d.finish = d.finish;
+		});
+		
+	// Create the circles based on the criteria
+	vizarea.selectAll("circle")
+		  .data(data)
+		.enter().append("circle")
+		  .attr("r", 8)
+		  .attr("cx", function(d) { return x(d.era); })
+		  .attr("cy", function(d) { return y(d.obp); })
+		  .style("fill", function(d) { return color(d.finish); })
+		  .on("mouseover",function(d){
+			tooltip.style("opacity",1)
+				.style("left", ((d3.event.pageX)+5) + "px")		
+				.style("top", ((d3.event.pageY)+1) + "px")
+				.html("Team: "+ (d.teamname) + "<br/>" + (d.year) + "  " + (d.finish)  + "<br/>" + "Win %: " + (d.winpct) );
+			})
+		.on("mouseout", function() {tooltip.style("opacity",0)});
+		
+		//Legend
+	
+	  var clicked = ""
+  
+	  var legend = vizarea.selectAll(".legend")
+		.data(color.domain())
+	    .enter().append("g")
+		.attr("class", "legend")
+		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
+		.style("fill", "blue")
+		.style("stroke","black");
+	
+	  legend.append("circle")
+		.attr("r", 9)
+		.style("fill", function(d) { return color(d); })
+		.attr("transform", function(d, i) { 
+				return "translate(" + (width -105) + "," + 40 + ")";
+				})
+		.on("click",function(d){
+		   d3.selectAll("circle").style("opacity",1)
+		   
+		   if (clicked !== d){
+			 d3.selectAll("circle")
+			   .filter(function(e){
+			   return e.finish !== d;
+			 })
+			   .style("opacity",0.2)
+			 clicked = d
+		   }
+			else{
+			  clicked = ""
+			}
+	  });
+	 
+	  legend.append("text")
+		.attr("transform", function(d, i) { 
+				return "translate(" + (width -85) + "," + 45 + ")";
+				})
+		.attr("font-size", "12px")
+		  .text(function(d){ return d; });
+
+	// Create the y and x axis
+	vizarea.append("g")
+		.call(d3.axisLeft(y));
+
+	vizarea.append("g")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(x));
+
+	// Create the axes labels
+	vizarea.append("text")
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 0 - margin.left + 10)
+		  .attr("x",0 - (height / 2))
+		  .attr("dy", "1em")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .text("ON BASE PERCENTAGE (OBP)");  	
+		
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .text("EARNED RUN AVERAGE (ERA)");	
+		
+		// Titles and Annotations
+		
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width/2) + " ,0)")
+		  .style("text-anchor", "middle")
+		  .style("fill", "blue")
+		  .style("font-size", "22px")
+		  .text("NPB 2014 - 2017 SEASON PERFORMANCE");		
+		  
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width-52) + " ,11)")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .style("font-size", "12px")
+		  .html("LEGEND: CLICK ON CIRCLES");	
+	vizarea.append("text")             
+		  .attr("transform", "translate(" + (width-52) + " ,23)")
+		  .style("text-anchor", "middle")
+		  .style("color", "blue")
+		  .style("font-size", "12px")
+		  .html("TO FILTER BY GROUP");
+		
+	});
 
 }
 	
