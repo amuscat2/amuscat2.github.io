@@ -297,7 +297,7 @@ function updateData1(){
 	var lineFunction = d3.line()
 	.x(function(d) { return d.x; })
 	.y(function(d) { return d.y; })
-	.interpolate('linear');
+	.curve(d3.curveLinear);
 	
 	var lineGraph = vizarea.append("path")
 	.attr("d", lineFunction(legendpath))
