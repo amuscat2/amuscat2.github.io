@@ -280,7 +280,7 @@ function updateData1(){
 	
 	//standardize text
 	//.append("text").attr("dy", "0em").text("line 1")  
-	
+		
 	vizarea.append("text")             
 		  .attr("transform", "translate(445,90)")
 		  .style("text-anchor", "left")
@@ -292,7 +292,21 @@ function updateData1(){
 		  .style("text-anchor", "left")
 		  .style("fill", "red")
 		  .style("font-size", "12px")
+		  .html("qualified for playoffs");	
+
+	vizarea.append("text")             
+		  .attr("transform", "translate(690,295)")
+		  .style("text-anchor", "left")
+		  .style("fill", "red")
+		  .style("font-size", "12px")
+		  .html("No team below this line");
+	vizarea.append("text")             
+		  .attr("transform", "translate(690,307)")
+		  .style("text-anchor", "left")
+		  .style("fill", "red")
+		  .style("font-size", "12px")
 		  .html("qualified for playoffs");		
+			  
 		  
 	//going to use path gen instead
 	//vizarea.append('rect')
