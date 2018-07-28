@@ -731,6 +731,25 @@ function updateData3(){
 	.attr("stroke-width", 2)
 	.attr("fill", "none");
 
+	vizarea.append("line")
+		.attr("x1", 90)
+		.attr("y1", 390)
+		.attr("x2", 440)
+		.attr("y2", 90)
+		.attr("stroke-width", 5)
+		.style("opacity",0.2)
+		.style("stroke-dasharray", ("5, 5"))
+		.attr("stroke", "red");
+	
+	vizarea.append("line")
+		.attr("x1", 495)
+		.attr("y1", 460)
+		.attr("x2", 700)
+		.attr("y2", 280)
+		.attr("stroke-width", 5)
+		.style("opacity",0.2)
+		.style("stroke-dasharray", ("5, 5"))
+		.attr("stroke", "red");
 	
 }
 
