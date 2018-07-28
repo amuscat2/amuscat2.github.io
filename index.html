@@ -794,6 +794,18 @@ function updateData3(){
     .attr("d", "M 0 0 120 60 0 120 30 60")
     .style("fill", "black");
 	
+	    vizarea.append('defs').append('marker')
+    .attr("id", "triangle")
+    .attr("refX", 60)
+    .attr("refY", 60)
+    .attr("markerWidth", 60)
+    .attr("markerHeight", 60)
+    .attr("orient", "auto")
+        .append('path')
+        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+        .attr('fill', 'black')
+        .style('stroke','none');
+	
 }
 
 function introduction(){
