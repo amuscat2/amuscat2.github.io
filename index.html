@@ -337,6 +337,34 @@ function updateData1(){
 	.attr("stroke-width", 2)
 	.attr("fill", "none");
 	
+	//x gridlines
+	function xgrid() {		
+		return d3.axisBottom(x)
+        .ticks(8)
+	}
+
+	// y gridlines
+	function ygrid() {		
+    return d3.axisLeft(y)
+        .ticks(4)
+	}
+	
+	  // add the X gridlines
+  vizarea.append("g")			
+      .attr("class", "grid")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xgrid()
+          .tickSize(-height)
+          .tickFormat("")
+      )
+
+  // add the Y gridlines
+  vizarea.append("g")			
+      .attr("class", "grid")
+      .call(ygrid()
+          .tickSize(-width)
+          .tickFormat("")
+      )
 	
 }
 
