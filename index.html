@@ -302,39 +302,16 @@ function updateData1(){
 		.style("stroke-dasharray", ("5, 5"))
 		.attr("stroke", "red");
 
-		
-	vizarea.append('rect')
-          .attr("x", 400)
-		  .attr("y", 400)
-		  .attr("width", 100) 
-		  .attr("height", 90)	  
-		  .attr("stroke", "black")
-		  .attr("stroke-width", 2)
-		  .attr("fill", "red");
+	// this works but going to use path gen for legend which will be recycled for other shapes
+	//vizarea.append('rect')
+    //      .attr("x", 400)
+	//	  .attr("y", 400)
+	//	  .attr("width", 100) 
+	//	  .attr("height", 90)	  
+	//	  .attr("stroke", "black")
+	//	  .attr("stroke-width", 2)
+	//	  .attr("fill", "red");
 		  
-	vizarea.append("svg:defs").append("svg:marker")
-		.attr("id", "triangle")
-		.attr("refX", 60)
-		.attr("refY", 60)
-		.attr("markerWidth", 60)
-		.attr("markerHeight", 60)
-		.attr("orient", "auto")
-		.append("path")
-		.attr("d", "M 0 0 120 60 0 120 30 60")
-		.style("fill", "black");
-		
-	vizarea.append('defs').append('marker')
-		.attr("id", "triangle")
-		.attr("refX", 60)
-		.attr("refY", 60)
-		.attr("markerWidth", 60)
-		.attr("markerHeight", 60)
-		.attr("orient", "auto")
-        .append('path')
-        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
-        .attr('fill', 'black')
-        .style('stroke','none');
-	
 	});
 	
 	//standardize text
@@ -394,7 +371,7 @@ function updateData1(){
 	.attr("d", legendborder(legendpath))
 	.attr("stroke", "black")
 	.attr("stroke-width", 2)
-	.attr("fill", "red");
+	.attr("fill", "none");
 	
 
 }
@@ -653,6 +630,8 @@ function updateData2(){
 		  .style("font-size", "12px")
 		  .html("35.3%,28.2%,30.4%");	
 	
+		
+	
 	
 }
 
@@ -872,7 +851,7 @@ function updateData3(){
 
 		  
 	vizarea.append("text")             
-		  .attr("transform", "translate(340,340)")
+		  .attr("transform", "translate(337,337)")
 		  .style("text-anchor", "start")
 		  .style("fill", "red")
 		  .style("font-size", "10px")
@@ -891,7 +870,23 @@ function updateData3(){
 		  .style("font-size", "10px")
 		  .html("ERA/OBP statistics have had better ranges");	
 	
+	var legendpath = [ 
+				{ "x": 320,   "y": 337},  
+				{ "x": 330,  "y": 342},
+				{ "x": 330,  "y": 332},
+				{ "x": 320,  "y": 337}];
+
+		  
+	var legendborder = d3.line()
+	.x(function(d) { return d.x; })
+	.y(function(d) { return d.y; })
+	.curve(d3.curveLinear);
 	
+	var lineGraph = vizarea.append("path")
+	.attr("d", legendborder(legendpath))
+	.attr("stroke", "red")
+	.attr("stroke-width", 2)
+	.attr("fill", "red");
 	
 }
 
