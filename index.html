@@ -304,13 +304,36 @@ function updateData1(){
 
 		
 	vizarea.append('rect')
-          .attr("x", 612)
-		  .attr("y", 0)
-		  .attr("width", 167) 
+          .attr("x", 400)
+		  .attr("y", 400)
+		  .attr("width", 100) 
 		  .attr("height", 90)	  
 		  .attr("stroke", "black")
 		  .attr("stroke-width", 2)
-		  .attr("fill", "none");
+		  .attr("fill", "red");
+		  
+	vizarea.append("svg:defs").append("svg:marker")
+		.attr("id", "triangle")
+		.attr("refX", 60)
+		.attr("refY", 60)
+		.attr("markerWidth", 60)
+		.attr("markerHeight", 60)
+		.attr("orient", "auto")
+		.append("path")
+		.attr("d", "M 0 0 120 60 0 120 30 60")
+		.style("fill", "black");
+		
+	vizarea.append('defs').append('marker')
+		.attr("id", "triangle")
+		.attr("refX", 60)
+		.attr("refY", 60)
+		.attr("markerWidth", 60)
+		.attr("markerHeight", 60)
+		.attr("orient", "auto")
+        .append('path')
+        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+        .attr('fill', 'black')
+        .style('stroke','none');
 	
 	});
 	
@@ -786,29 +809,6 @@ function updateData3(){
 		  .style("fill", "black")
 		  .style("font-size", "12px")
 		  .html("TO FILTER BY GROUP");
-		  
-		vizarea.append("svg:defs").append("svg:marker")
-    .attr("id", "triangle")
-    .attr("refX", 60)
-    .attr("refY", 60)
-    .attr("markerWidth", 60)
-    .attr("markerHeight", 60)
-    .attr("orient", "auto")
-    .append("path")
-    .attr("d", "M 0 0 120 60 0 120 30 60")
-    .style("fill", "black");
-	
-	vizarea.append('defs').append('marker')
-    .attr("id", "triangle")
-    .attr("refX", 60)
-    .attr("refY", 60)
-    .attr("markerWidth", 60)
-    .attr("markerHeight", 60)
-    .attr("orient", "auto")
-        .append('path')
-        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
-        .attr('fill', 'black')
-        .style('stroke','none');
 	
 		
 	});
