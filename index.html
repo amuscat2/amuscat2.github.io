@@ -609,7 +609,13 @@ function updateData2(){
 		  .style("fill", "red")
 		  .style("font-size", "12px")
 		  .html("If past repeats, one of them is most likely to win");	
-		  
+	
+	vizarea.append("text")             
+		  .attr("transform", "translate(215,80)")
+		  .style("text-anchor", "middle")
+		  .style("fill", "red")
+		  .style("font-size", "14px")
+		  .html("FINALS PREDICTION - BEST PITCHING (CHICAGO) vs BEST HITTING (HOUSTON)");
 		  
 	vizarea.append("text")             
 		  .attr("transform", "translate(610,495)")
@@ -636,7 +642,20 @@ function updateData2(){
 				{ "x": 112,  "y": 163},
 				{ "x": 122,  "y": 163},
 				{ "x": 117,  "y": 173}];
-		
+	
+	vizarea.append("text")             
+		  .attr("transform", "translate(117,167)")
+		  .style("text-anchor", "middle")
+		  .style("fill", "red")
+		  .style("font-size", "10px")
+		  .html("HOUSTON ASTROS");
+	vizarea.append("text")             
+		  .attr("transform", "translate(299,80)")
+		  .style("text-anchor", "middle")
+		  .style("fill", "red")
+		  .style("font-size", "10px")
+		  .html("CHICAGO CUBS");
+	
 		var arrowpath2 = [ 
 				{ "x": 299,   "y": 86},  
 				{ "x": 294,  "y": 76},
