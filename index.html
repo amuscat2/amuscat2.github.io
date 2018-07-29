@@ -632,12 +632,30 @@ function updateData2(){
 	
 	//arrow path (not legend)
 		var arrowpath1 = [ 
-				{ "x": 50,   "y": 160},  
-				{ "x": 45,  "y": 150},
-				{ "x": 55,  "y": 150},
-				{ "x": 50,  "y": 160}];
+				{ "x": 100,   "y": 170},  
+				{ "x": 95,  "y": 160},
+				{ "x": 105,  "y": 160},
+				{ "x": 100,  "y": 170}];
 		
 		var arrowpath2 = [ 
+				{ "x": 250,   "y": 90},  
+				{ "x": 245,  "y": 80},
+				{ "x": 255,  "y": 80},
+				{ "x": 250,  "y": 90}];
+				
+		var arrowpath3 = [ 
+				{ "x": 120,   "y": 100},  
+				{ "x": 115,  "y": 90},
+				{ "x": 125,  "y": 90},
+				{ "x": 120,  "y": 100}];
+				
+		var arrowpath4 = [ 
+				{ "x": 120,   "y": 100},  
+				{ "x": 115,  "y": 90},
+				{ "x": 125,  "y": 90},
+				{ "x": 120,  "y": 100}];
+		
+		var arrowpath5 = [ 
 				{ "x": 120,   "y": 100},  
 				{ "x": 115,  "y": 90},
 				{ "x": 125,  "y": 90},
@@ -651,13 +669,13 @@ function updateData2(){
 	var arrow1 = vizarea.append("path")
 	.attr("d", arrowborder(arrowpath1))
 	.attr("stroke", "red")
-	.attr("stroke-width", 2)
+	.attr("stroke-width", 1)
 	.attr("fill", "red");	
 	
 	var arrow2 = vizarea.append("path")
 	.attr("d", arrowborder(arrowpath2))
 	.attr("stroke", "red")
-	.attr("stroke-width", 2)
+	.attr("stroke-width", 1)
 	.attr("fill", "red");	
 	
 	
@@ -915,7 +933,7 @@ function updateData3(){
 	var lineGraph = vizarea.append("path")
 	.attr("d", legendborder(legendpath))
 	.attr("stroke", "red")
-	.attr("stroke-width", 2)
+	.attr("stroke-width", 1)
 	.attr("fill", "red");
 	
 }
