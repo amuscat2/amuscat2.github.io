@@ -302,7 +302,7 @@ function updateData1(){
 		.style("stroke-dasharray", ("5, 5"))
 		.attr("stroke", "red");
 
-	// this works but going to use path gen for legend which will be recycled for other shapes
+	// will use path for other shapes
 	//vizarea.append('rect')
     //      .attr("x", 400)
 	//	  .attr("y", 400)
@@ -592,19 +592,19 @@ function updateData2(){
 	.attr("fill", "none");
 
 	vizarea.append("text")             
-		  .attr("transform", "translate(200,120)")
+		  .attr("transform", "translate(215,120)")
 		  .style("text-anchor", "middle")
 		  .style("fill", "red")
 		  .style("font-size", "12px")
 		  .html("5 Teams lead the Pack: Boston, Houston,");
 	vizarea.append("text")             
-		  .attr("transform", "translate(200,132)")
+		  .attr("transform", "translate(215,132)")
 		  .style("text-anchor", "middle")
 		  .style("fill", "red")
 		  .style("font-size", "12px")
 		  .html("Chicago, New York, and Los Angeles Dodgers");	
 	vizarea.append("text")             
-		  .attr("transform", "translate(200,144)")
+		  .attr("transform", "translate(215,144)")
 		  .style("text-anchor", "middle")
 		  .style("fill", "red")
 		  .style("font-size", "12px")
@@ -616,7 +616,7 @@ function updateData2(){
 		  .style("text-anchor", "middle")
 		  .style("fill", "red")
 		  .style("font-size", "12px")
-		  .html("3 Teams have performed worse than prior 4 years ");
+		  .html("3 teams have performed worse than prior years ");
 	vizarea.append("text")             
 		  .attr("transform", "translate(625,507)")
 		  .style("text-anchor", "middle")
@@ -632,16 +632,16 @@ function updateData2(){
 	
 	//arrow path (not legend)
 		var arrowpath1 = [ 
-				{ "x": 115,   "y": 170},  
-				{ "x": 110,  "y": 160},
-				{ "x": 120,  "y": 160},
-				{ "x": 115,  "y": 170}];
+				{ "x": 117,   "y": 170},  
+				{ "x": 112,  "y": 160},
+				{ "x": 122,  "y": 160},
+				{ "x": 117,  "y": 170}];
 		
 		var arrowpath2 = [ 
-				{ "x": 295,   "y": 86},  
-				{ "x": 290,  "y": 76},
-				{ "x": 300,  "y": 76},
-				{ "x": 295,  "y": 86}];
+				{ "x": 299,   "y": 86},  
+				{ "x": 294,  "y": 76},
+				{ "x": 304,  "y": 76},
+				{ "x": 299,  "y": 86}];
 				
 		var highlightpath1 = [ 
 				{ "x": 90,   "y": 380},  
