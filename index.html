@@ -377,7 +377,7 @@ function updateData1(){
 }
 
 updateData1();
-// Update function for second scene
+// Update function for third scene
 
 function updateData2(){
 
@@ -630,10 +630,40 @@ function updateData2(){
 		  .style("font-size", "12px")
 		  .html("35.3%,28.2%,30.4%");	
 	
+	//arrow path (not legend)
+		var arrowpath1 = [ 
+				{ "x": 50,   "y": 160},  
+				{ "x": 45,  "y": 150},
+				{ "x": 55,  "y": 150},
+				{ "x": 50,  "y": 160}];
 		
+		var arrowpath2 = [ 
+				{ "x": 120,   "y": 100},  
+				{ "x": 115,  "y": 90},
+				{ "x": 125,  "y": 90},
+				{ "x": 120,  "y": 100}];
+		
+	var arrowborder = d3.line()
+	.x(function(d) { return d.x; })
+	.y(function(d) { return d.y; })
+	.curve(d3.curveLinear);
+	
+	var arrow1 = vizarea.append("path")
+	.attr("d", arrowborder(arrowpath1))
+	.attr("stroke", "red")
+	.attr("stroke-width", 2)
+	.attr("fill", "red");	
+	
+	var arrow2 = vizarea.append("path")
+	.attr("d", arrowborder(arrowpath2))
+	.attr("stroke", "red")
+	.attr("stroke-width", 2)
+	.attr("fill", "red");	
 	
 	
 }
+
+// second scene
 
 function updateData3(){ 
 
@@ -851,7 +881,7 @@ function updateData3(){
 
 		  
 	vizarea.append("text")             
-		  .attr("transform", "translate(337,337)")
+		  .attr("transform", "translate(339,337)")
 		  .style("text-anchor", "start")
 		  .style("fill", "red")
 		  .style("font-size", "10px")
@@ -871,10 +901,10 @@ function updateData3(){
 		  .html("ERA/OBP statistics have had better ranges");	
 	
 	var legendpath = [ 
-				{ "x": 325,   "y": 335},  
-				{ "x": 335,  "y": 340},
-				{ "x": 335,  "y": 330},
-				{ "x": 325,  "y": 335}];
+				{ "x": 327,   "y": 335},  
+				{ "x": 337,  "y": 340},
+				{ "x": 337,  "y": 330},
+				{ "x": 327,  "y": 335}];
 
 		  
 	var legendborder = d3.line()
