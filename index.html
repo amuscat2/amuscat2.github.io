@@ -632,34 +632,28 @@ function updateData2(){
 	
 	//arrow path (not legend)
 		var arrowpath1 = [ 
-				{ "x": 100,   "y": 170},  
-				{ "x": 95,  "y": 160},
-				{ "x": 105,  "y": 160},
-				{ "x": 100,  "y": 170}];
+				{ "x": 112,   "y": 170},  
+				{ "x": 107,  "y": 160},
+				{ "x": 117,  "y": 160},
+				{ "x": 112,  "y": 170}];
 		
 		var arrowpath2 = [ 
-				{ "x": 250,   "y": 90},  
-				{ "x": 245,  "y": 80},
-				{ "x": 255,  "y": 80},
-				{ "x": 250,  "y": 90}];
+				{ "x": 280,   "y": 86},  
+				{ "x": 275,  "y": 76},
+				{ "x": 285,  "y": 76},
+				{ "x": 280,  "y": 86}];
 				
-		var arrowpath3 = [ 
-				{ "x": 120,   "y": 100},  
-				{ "x": 115,  "y": 90},
-				{ "x": 125,  "y": 90},
-				{ "x": 120,  "y": 100}];
+		var highlightpath1 = [ 
+				{ "x": 90,   "y": 380},  
+				{ "x": 490,  "y": 80},
+				{ "x": 90,  "y": 80},
+				{ "x": 90,  "y": 380}];
 				
-		var arrowpath4 = [ 
-				{ "x": 120,   "y": 100},  
-				{ "x": 115,  "y": 90},
-				{ "x": 125,  "y": 90},
-				{ "x": 120,  "y": 100}];
-		
-		var arrowpath5 = [ 
-				{ "x": 120,   "y": 100},  
-				{ "x": 115,  "y": 90},
-				{ "x": 125,  "y": 90},
-				{ "x": 120,  "y": 100}];
+		var highlightpath2 = [ 
+				{ "x": 505,   "y": 460},  
+				{ "x": 710,  "y": 280},
+				{ "x": 710,  "y": 280},
+				{ "x": 710,  "y": 460}];
 		
 	var arrowborder = d3.line()
 	.x(function(d) { return d.x; })
@@ -677,6 +671,21 @@ function updateData2(){
 	.attr("stroke", "red")
 	.attr("stroke-width", 1)
 	.attr("fill", "red");	
+	
+	var arrow2 = vizarea.append("path")
+	.attr("d", arrowborder(highlightpath1))
+	.attr("stroke", "red")
+	.attr("stroke-width", 1)
+	.style("opacity",0.1)
+	.attr("fill", "orange")
+	;	
+	
+	var arrow2 = vizarea.append("path")
+	.attr("d", arrowborder(highlightpath2))
+	.attr("stroke", "red")
+	.attr("stroke-width", 1)
+	.style("opacity",0.1)
+	.attr("fill", "orange");	
 	
 	
 }
