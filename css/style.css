@@ -33,10 +33,12 @@ body {
 
 .dot {
   stroke: darkblue;
+  cursor: pointer;
+}
 }
 
 .legend rect {
-  fill:seashell;
+  fill:none;
   stroke:black;
   }
 
@@ -94,5 +96,14 @@ body {
   overflow: hidden;
   background-color: darkgrey;
 }
+
+#vizsvg2 {
+  width: 50%;
+  height: 70%;
+  margin:auto;
+  z-index: 10;
+  background-color: white;
+}
+
 
 
