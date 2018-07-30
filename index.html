@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- Load in d3 library -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="js/scripts.js"></script>
 
 <meta charset="utf-8">
 
@@ -25,14 +24,7 @@ There are many statistics in baseball that could be used to measure pitching and
 <br>
 <br>
 
-<button type="button" class = "button2" onclick="info()">About the Visualization</button>
-
-<?php
-function info() {
-echo readfile("ProjectEssay.txt");
-}
-?>
-
+<button type="button" class = "button2" onclick="essay()">About the Visualization</button>
 
 <br>
 <br>
@@ -957,6 +949,18 @@ function updateData3(){
 	.attr("stroke-width", 1)
 	.attr("fill", "red");
 	
+}
+
+function essay() {
+
+d3.selectAll("svg > *").remove();
+
+d3.select("#vizchart").append("text")             
+		  .style("text-anchor", "start")
+		  .style("fill", "black")
+		  .style("font-size", "10px")
+		  .html(src="ProjectEssay.txt");
+
 }
 
 
