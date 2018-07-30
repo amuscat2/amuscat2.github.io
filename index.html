@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- Load in d3 library -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="js/scripts.js"></script>
 
 <meta charset="utf-8">
 
@@ -25,6 +26,14 @@ There are many statistics in baseball that could be used to measure pitching and
 <br>
 
 <button type="button" class = "button2" onclick="info()">About the Visualization</button>
+
+<?php
+function info() {
+echo readfile("ProjectEssay.txt");
+}
+?>
+
+
 <br>
 <br>
 (If "About the Visualization" button does not work, please enable web alerts for this site)
@@ -950,10 +959,7 @@ function updateData3(){
 	
 }
 
-function info(){
-svg.load("ProjectEssay.txt");
-}
-	
+
 </script>
 
 </body></html>
