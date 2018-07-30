@@ -28,6 +28,52 @@ There are many statistics in baseball that could be used to measure pitching and
 
 
 <br>
+
+
+
+Data Visualization – Final Project Essay
+Student: Adrian Muscat
+Topic: Evaluating Baseball Performance based on Key Statistics
+Sources: 
+All Data was aggregated from https://www.baseball-reference.com/
+Inspiration was gained from many examples on bl.ocks.org
+2 Examples:
+1. Scatter Plot: Legend Filtering - http://bl.ocks.org/Ctuauden/52d057254665400f561ef73cb6e5841a
+2. Multiline Chart with Filter - http://bl.ocks.org/fabiomainardi/cf1233873ea5e7bc899b
+
+Introduction:
+The purpose of the visualization was to explore the correlation between pitching, hitting, and team success across different leagues and seasons. Multiple seasons for both the North American Major League Baseball and Japan's Nippon Professional Baseball leagues were evaluated. 
+To represent this, two of the most important performance indicators were chosen. 
+For pitching, Earned Run Average (ERA) will be used which is the average number of runs allowed per 9 innings. For ERA, lower is better. 
+For hitting, On Base Percentage (OBP) will be used which measures how frequently a batter will reach a base. For OBP, higher is better. 
+
+Prior to the visualization, there is some descriptive text used to provide informational background. This is to provide context and inform if the audience is unfamiliar with certain aspects of baseball. The background used lighter colors and the scatter plots are in their own div/svg area with a white background and darker hued/saturated elements for contrast.
+
+Narrative Visualization Structure
+The structure chosen for this project was the interactive slideshow. A total of 3 slides were utilized. Transitions between slides was executed with large buttons closely aligned at the top of the page. They enlarge, transition upon hovering, and are all accessible from the same page so transitions back and forth can be achieved rapidly. The 3 scenes/slides can be broken down as follows:
+
+Scene 1: 2014 to 2017 Major League Baseball Seasons for all 30 teams - All seasons are displayed to evaluate past results based on 6 possible finishing Playoff positions of the team from Champions to Did not Qualify
+Scene 2: 2014 to 2017 Nippon League Baseball Seasons for all 12 teams– All seasons are displayed to evaluate past results based on 3 possible finishing Playoff positions of the team from Champions to Did not Qualify. Note NPB has fewer teams so there are fewer categories to evaluate.
+Scene 3: Current 2018 Major League Baseball Season – this season is still ongoing so results were taken until July 27, 2018.
+
+Each scene follows the same format and design. Margins and axis intervals are kept the same so that data between slides can be directly compared. A uniform margin extending only for the ranges of the data was used to spread out the data points over the canvas. For all the scatter plots, circles of 8-pixel radius were used for the marks. This makes it easy to hover over and locate each of the marks. Tooltips (not to be confused with annotations) were used in the place of gridlines to prevent overcrowding on the graph. These can be accessed by simply hovering over a data point. Each tooltip provides additional information about the data including win %, team name, and year. 
+
+Annotations were layered over the graph on each scene to highlight key graphical areas. In addition to the filterable legend and the axes with labels, these annotations are directly placed on the scatter plot area. For scene 1, two dotted segregation lines were added to separate the graph visually with a textual explanation. These 2 lines were carried forward into Scene 2 and Scene 3 as to provide reference but they were set to a much lower opacity to appear faded (again going back to the intention of trying not to visually crowd the scatter plot). Scene 2 highlighted 3 different areas. 2 notes were added to comment on the extreme high and low of NPB performance. A third note was added with an arrow to point out an outlier where a poorly performing team in the regular season achieved playoff success. The arrow style was kept consistent into Scene 3. Scene 3 used 2 different annotation types. 2 arrows were used with text labels to mark the predicted finalists based on highest ERA and highest OBP. 2 faded triangles were used to capture 2 specific zones of interest (explained with text). The last thing to note about the annotations is that besides the final prediction, all annotations used the same color scheme (red/orange).
+
+
+As part of the interactive slideshow, parameters are used to measure and filter the data to allow user exploration between the different Playoff Categories. By clicking on the individual circles in the legend, each group can be highlighted in place as the other categories become faded. Users are given visual cues that these parameters are clickable by segregating the legend in its own box and textually indicating to click the preferred group. The color scheme used for the groups was d3’s built in category 10 used for up to 10 colors. More than 5 categories were used and the colors in this package were distinct enough to avoid any confusion between categories. Effort was taken to maintain whitespace and reduce unnecessary noise or text. Other parameters are the ERA and OBP values displayed on the axis which have been previously explained. The other parameter is the scene itself which changes the years and/or league being evaluated. All titles are centered and tied closely to where the parameter is indicated. For example, the buttons and scatter plot titles are very close to help the user identify which scene they are viewing.
+
+There are two kinds of triggers on the visualization that tie to the parameters. The legend filters filter the playoff categories which are differentiated by colors. When the user clicks on 1 circle, only that group is clearly visible and the others are assigned a 0.1 opacity. As previously discussed the other trigger is the scene switching. This is done through access from the buttons just above the visualization. The title of the scene changes depending on what scene is selected. Each button calls the function associated with the respective scene.
+
+The about the visualization is embedded into one of the buttons similar to the individual scenes but is differentiated by a change of color. 
+
+The data used for this visualization had many more layers possible to analyze but the project was kept simple to not visually crowd the visual space and due to time constraints. For example, there were other possible parameters that could have been made into filters like what was completed for the Playoff Categories, but the design decision was made to include these in the tooltip instead. 
+
+Analysis Results
+The interactive slideshow logically progresses from analyzing past trends in the MLB, to past trends in the NPB, to current performance in the MLB. A final prediction is provided solely based on the individual performance of teams for the best pitching and hitting teams. Of course, there are other teams that could make it to the finals similar to how the 2017 Yokohama Bay Stars achieved success in the NPB.
+
+
+
 </p>
 
 	
