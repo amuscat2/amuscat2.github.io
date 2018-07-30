@@ -955,11 +955,14 @@ function essay() {
 
 d3.selectAll("svg > *").remove();
 
-d3.select("#vizchart").append("text")             
-		  .style("text-anchor", "middle")
-		  .style("fill", "black")
-		  .style("font-size", "16px")
-		  .html(src="ProjectEssay.txt");
+d3.text("essay.csv", function(text) {
+  var data = d3.csvParseRows(text).map(function(row) {
+    return row.map(function(value) {
+      return +value;
+    });
+  });
+  console.log(data);
+});
 
 }
 
